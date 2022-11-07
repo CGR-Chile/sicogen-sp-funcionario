@@ -1,0 +1,43 @@
+.grillaInformes{
+	border:none;
+	font: bold 12px arial;
+	padding: 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #7AC142;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #7AC142;
+}
+
+.grillaInformes thead{
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+.grillaInformes tbody{
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+	font: normal 12px arial;
+}
+
+.grillaInformes th {
+	background-color: #7AC142;
+	padding: 3px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	color: #FFFFFF;
+	vertical-align: top;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #FFFFFF;
+}

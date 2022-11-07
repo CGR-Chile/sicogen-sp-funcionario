@@ -1,0 +1,40 @@
+
+  * { padding: 0; margin: 0; }
+  table.cruises { 
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 11px;
+    cellspacing: 0; 
+    border-collapse: collapse; 
+     
+    }
+  table.cruises th, table.cruises td { 
+    border-right: 1px solid #999; 
+    border-bottom: 1px solid #999; 
+    }
+  table.cruises th { background: #aab; }
+  table.cruises td { background: #eee; }
+  
+  div.scrollableContainer { 
+    position: relative; 
+    padding-top: 1.7em; 
+    margin: 40px;    
+    border: 1px solid #999;
+    background: #aab;    
+    }
+  div.scrollingArea { 
+    height: 240px; 
+    overflow: auto; 
+    }
+
+  table.scrollable thead tr {
+    left: 0; top: 0;
+    position: absolute
+    /*position: absolute;*/
+    }
+    
+  table.cruises .name     { width: 126px; }
+  table.cruises .operator { width: 126px; }
+  table.cruises .began    { width: 76px;  }
+  table.cruises .tonnage  { width: 60px;  }
+  table.cruises .status   { width: 142px; }
+

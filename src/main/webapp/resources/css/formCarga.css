@@ -1,0 +1,337 @@
+html, body { height:100%;}
+/*body { height:100%;}*/
+
+
+.tblUpInformes{border-collapse:collapse;}
+.tblUpInformes td,th{}
+.tblUpInformes thead{background-color:#0066b8; color:#fff; font:bold 12px arial; height:25px;}
+.tblUpInformes tbody{font:normal 12px arial; color:#000;}
+.tblUpInformes tbody tr{height: 20px;}
+.tblUpInformes tbody .row01{background-color:#FFF;}
+.tblUpInformes tbody .row02{background-color:#D7D7D9;}
+
+
+
+
+
+
+.formFile {
+	margin: 0;
+	padding: 0;
+	heigth: 100%;
+	background-color: #E0E0E2;
+	/*width:840px;*/
+}
+#cargaInformes{
+	width: 100%;
+}
+.btnVolver{
+	background-image: url('../images/volver_on.png');
+	width: 71px;
+	float:left;
+}
+
+.contenedorEnvioArchivo{
+	background-color: #fff;
+	width: 500px;
+	height: 300px;
+	
+	margin:15px auto 5px auto;
+	padding: 5px 10px 10px 25px;
+	border: 2px solid;
+	border-radius: 25px;
+	-moz-border-radius: 25px; /* Old Firefox */
+}
+
+.overlayCarga {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-height: 110%;
+	background: #000;
+	z-index: 1001;
+	opacity: .53;
+	-moz-opacity: 0.75;
+	filter: alpha(opacity=53);
+}
+.modalCarga {
+	display: none;
+	position: absolute;
+	top: 3%;
+	left: 10%;
+	width: 770px;
+	height: 710px;
+	padding: 16px;
+	background: #fff;
+	color: #333;
+	z-index: 1002;
+	overflow: auto;
+}
+img .icoImage100 {
+	width: 100px;
+	height: 100px;
+}
+.cargando{
+	text-align: center;
+	margin: 15px 0 20px 0;
+	
+}
+.textoCargando{
+	width:100%;
+	text-align: center;
+	font: bold 12px sans-serif;
+}
+.icoImage100 {
+	width: 100px;
+	height: 100px;
+}
+.formFile .row01 {
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	clear: both;
+	float:left;
+	/*
+	min-height: 35px; 
+	height: auto !important; 
+	height: 100%;
+	*/
+	/*height: inherit auto 
+	font: bold 10px sans-serif;
+	background-color: #F8E9E9;*/
+	background-color: #fff;
+	display: table;
+}
+
+.formFile .row01_der {
+	float:left;
+	margin:0 0 0 10px; 
+	width:30px
+	padding: 0px;
+	position: relative;	
+	min-height: 35px; /* real browsers */
+	height: auto !important; /* real browsers */
+	height: 100%;
+	/*height: inherit auto */
+	font: bold 10px sans-serif;
+	/*background-color: #F8E9E9;*/
+	background-color: #FAFAFA;
+	display: table;
+}
+
+.formFile .row02 {
+	/*
+	min-height: 32px;
+	height: auto !important;
+	height: 100%;
+	*/
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	clear: both;
+	float: left;	
+	background-color: #D7D7D9;
+	/*ECD6D6 B49C9C F8E9E9
+	font: bold 10px sans-serif;*/
+	display: table;
+}
+.formFile .row02_der {
+	min-height: 32px;
+	height: auto !important;
+	height: 100%;
+	margin:0 0 0 10px; 
+	padding: 0px;
+	position: static;
+	float: left;
+	font: bold 10px sans-serif;
+	background-color: #E6E6E6;
+	/*ECD6D6 B49C9C F8E9E9*/
+	display: table;
+}
+
+.cel01 {
+	width: 30px;
+	float: left;
+	text-align: center;
+	display: cell;
+}
+
+.cel02 {width: 350px;float: left;padding-right: 5px;display: table-cell;vertical-align: middle;}
+
+.cel03 {width: 220px;float: left;padding: 0px 0 0 0;display: cell;}
+.celm03 {float: left;width: 210px;padding: 3px 0 0 0;display: cell;}
+
+.cel04 {float: left;height: 30px;padding: 3px 0 0 0;display: cell;}
+.cel05 {width:40px;float:left;text-align: center;display: cell;}
+.cel06 {width:114px;display: cell;position: relative;margin: 0 5px 0 5px;min-height: 35px;}
+
+.cel06tab {
+	position: relative;
+	width: 250px;
+	margin: 0 5px 0 5px;
+	min-height: 35px;
+	float: left;
+	display: cell;
+}
+
+.cel07 {
+	display: none;
+	width: 70px;
+	float: left;
+	display: cell;
+}
+
+.cel08 {
+	width: 60px;
+	float: left;
+	display: cell;
+	text-align: center;
+	padding: 0 auto;
+}
+.cel09 {
+	width: 52px;
+	float: left;
+	display: cell;
+	text-align: center;
+	padding: 0 auto;
+}
+.cel10 {	
+	width: 30px;
+	/*background-color: #eee;*/
+	float: left;
+	display: cell;
+	text-align: center;
+	min-height: 35px;
+	padding: 0 auto;
+}
+.cel11 {	
+	width: 5px;
+	background-color: #eee;
+	float: left;
+	display: cell;
+	min-height: 35px;
+	padding: 0 auto;
+}
+.cel12 {	
+	display: none;
+}
+.cel04 input {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10px;
+	width: 125px;
+	line-height: 25px;
+	color: #666;
+	border: 1px solid lightGrey;
+	border-radius: 9px 9px 9px 9px;
+	margin: 1px;
+	padding: 1px 1px 1px 3px;
+	disabled: disabled;
+}
+
+.mcel11 {	
+	width: 20px;
+	background-color: #eee;
+	float: left;
+	display: cell;
+	min-height: 35px;
+	padding: 0 auto;
+}
+.cel04 input:disabled {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10px;
+	width: 120px;
+	height: 18px;
+	line-height: 20px;
+	color: #666;
+	border: 2px solid lightGrey;
+	margin: 1px;
+	padding: 1px 1px 1px 3px;
+	disabled: disabled;
+	border-radius: 9px;
+}
+
+.box-login .boton {
+	float: right;
+	clear: both;
+	border: none;
+	margin: 0 25px 15px 0;
+	width: 86px;
+	height: 22px;
+	background: url(../media/menu/back_ingresar.gif) no-repeat left top;
+	font-size: 11px;
+	color: white;
+	font-weight: bold;
+	padding: 2px 0 5px;
+	cursor: pointer;
+}
+
+.botonManual {
+	margin: 0em;
+	font: -webkit-small-control;
+	font-family: Tahoma, Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 11px;
+	color: #000000;
+	border-style: solid;
+	border-width: 1px;
+	border-top-color: #DDDDD8;
+	border-left-color: #B9B9B4;
+	border-right-color: #B9B9B4;
+	border-bottom-color: #797975;
+	background-color: #FDFDFA;
+	text-decoration: none;
+	white-space: nowrap;
+	background-image: url(../images/button_bg_n.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	margin: 0px;
+	border-color: #DDDDD8 rgb(175, 175, 175) rgb(121, 121, 117);
+	
+	padding: 0px 9px 0px 9px;
+	
+	border-radius: 5em 5em 5em 5em;
+	-moz-border-radius: 5em 5em 5em 5em;
+}
+.contErroresCarga{
+	position:absolute;
+	display:none;	
+	width: 550px;
+	left:15%;
+	top:300px;
+	background-color: #BDBDBD;
+}
+.cabErrores{
+	width: 550px;
+	height: 30px;
+	color:#FFFFFF;
+	background-color: #0066B8;
+}
+.tituloErrores{
+	padding: 5px 0 0 10px;
+	float:left;
+	font: bold 12px arial;
+}
+.mensajeErrores{
+	font: normal 12px arial;	
+}
+.errorPar{
+	width:100%;
+	background-color: #D7D7D9;
+}
+.errorImpar{
+	width:100%;
+	background-color: #BDBDBD;
+}
+
+.mostrarPanel{
+	display:block;	
+}
+
+.ocultarPanel{
+	display:none;	
+}

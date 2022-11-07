@@ -1,0 +1,12 @@
+.contIcono{
+	margin:0 0 0 15px;
+	float:left;
+	width:135px;
+}
+img .boton{
+	clip: rect(0px, 100px, 20px, 0px);
+	width:135px;
+	height:20px; 
+	float:left;
+	cursor: pointer;
+}

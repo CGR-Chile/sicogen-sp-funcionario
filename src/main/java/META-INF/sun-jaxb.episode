@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+  <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.11 
+Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2020.11.26 a las 09:17:37 AM GMT-04:00 
+
+  -->
+  <bindings xmlns:tns="http://www.cgr.cl/OSB/SectorPublico/TDRII/V2/EXP/ValidacionInforme" if-exists="true" scd="x-schema::tns">
+    <schemaBindings map="false">
+      <package name="cl.contraloria.sicogen.webservices.validacion.informe.tdrii"/>
+    </schemaBindings>
+    <bindings if-exists="true" scd="tns:validarInforme">
+      <class ref="cl.contraloria.sicogen.webservices.validacion.informe.tdrii.ValidarInforme"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:validarInformeResponse">
+      <class ref="cl.contraloria.sicogen.webservices.validacion.informe.tdrii.ValidarInformeResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:listaErrores">
+      <class ref="cl.contraloria.sicogen.webservices.validacion.informe.tdrii.ListaErrores"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:error">
+      <class ref="cl.contraloria.sicogen.webservices.validacion.informe.tdrii.Error"/>
+    </bindings>
+  </bindings>
+</bindings>

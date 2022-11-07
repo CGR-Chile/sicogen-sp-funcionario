@@ -1,0 +1,71 @@
+body{
+	      background-color: #CACACA;
+    height: 100px;
+    width: 100px;
+	
+}
+#imagen1{
+	width: 120px;
+	}
+#Ncertificado{
+	  left: 478px;
+    position: relative;
+    top: -100px;
+    width: 150px;	
+}
+
+#qrcode{
+  left: 500px;
+    position: relative;
+    top: -120px;
+}
+
+#numero{ 
+	left: 100px;
+    position: relative;
+    top: -20px;
+}
+
+
+#titulo1 {
+    font-size: 20px;
+    left: 120px;
+    position: relative;
+    top: -50px;
+    width: 350px;
+}
+#texto{
+	width: 600px;
+	
+}
+#numeroCertificado{
+   left: 100px;
+    position: relative;
+    top: -20px;
+}
+#QR{
+	  left: 400px;
+    position: relative;
+    top: -100px;
+		
+}
+#boton1{
+	 left: 350px;
+    position: relative;
+    top: 50px;	
+       height: 40px;
+    width: 100px;
+}
+#boton2{
+   left: 200px;
+    position: relative;
+    top: 25px;
+   
+}
+
+#botonx1{
+   height: 40px;
+    left: 0;
+    position: relative;
+    top: 15px;
+    width: 100px;}

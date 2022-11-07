@@ -1,0 +1,78 @@
+.tblUpBuscador {
+	clear: both;
+	border-collapse: collapse;
+	width: 100%;
+	height: 300px;
+	display: block;
+}
+
+#tblResultadosDocumentos tbody tr:nth-child(even) {
+	background-color: #d7d7d9;
+}
+
+#tblResultadosDocumentos thead {
+	background-color: #3F87C1;
+	color: #FFFFFF;
+	font: bold 10 px arial;
+	height: 2 px;
+}
+
+.tblUpBuscador thead tr:first-child {
+	height: 10px;
+	text-align: left;
+}
+
+.tblUpBuscador thead tr:nth-child(2) {
+	height: 30px;
+	text-align: center;
+}
+
+.tblUpBuscador thead tr:first-child th {
+	background: #0066B8;
+	font: bold 10px arial;
+	height: 20px;
+}
+
+.tblUpBuscador thead tr:first-child th div {
+	margin-left: 10px;
+}
+
+.tblUpBuscador tbody {
+	font: 11px arial;
+	height: 250px;
+	display: inline-block;
+	width: 910px;
+	overflow: auto;
+}
+
+.tblUpBuscador.250px {
+	width: 250px
+}
+
+.tblUpBuscador.200px {
+	width: 200px
+}
+
+th {
+	width: 150px
+}
+
+th div {
+	text-align: center;
+}
+
+td {
+	width: 150px
+}
+
+td div {
+	text-align: center;
+}
+
+.300px {
+	width: 300px
+}
+
+.100px {
+	width: 100px
+}

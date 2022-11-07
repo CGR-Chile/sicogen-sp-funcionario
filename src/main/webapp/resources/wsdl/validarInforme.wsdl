@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<wsdl:definitions 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                     xmlns:tns="http://www.cgr.cl/OSB/SectorPublico/TDRMP/V2/EXP/ValidacionInforme"
+                     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     name="ValidarInforme"
+                     targetNamespace="http://www.cgr.cl/OSB/SectorPublico/TDRMP/V2/EXP/ValidacionInforme">
+    <wsdl:types>
+
+        <xsd:schema targetNamespace="http://www.cgr.cl/OSB/SectorPublico/TDRMP/V2/EXP/ValidacionInforme">
+
+            <xsd:element name="validarInforme">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="usuario" type="xsd:string"/>
+                        <xsd:element name="idFileUpload" type="xsd:decimal"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="validarInformeResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="estado" 			type="xsd:string"/>
+                        <xsd:element name="mensaje" 		type="xsd:string"/>
+                        <xsd:element name="listaErrores" 	type="tns:listaErrores" minOccurs="1" maxOccurs="1"/>
+                        <xsd:element name="excepcion" 		type="xsd:string"/>
+                        <xsd:element name="fechaInicio" 	type="xsd:string"/>
+                        <xsd:element name="fechaFin" 		type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+
+            <xsd:complexType name="listaErrores" >
+                <xsd:sequence>
+                    <xsd:element name="erroresDetalle" 	type="tns:erroresDetalle" 	minOccurs="0" 	maxOccurs="unbounded"/>
+                    <xsd:element name="erroresGeneral" 	type="tns:erroresGeneral" 	minOccurs="0" 	maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType 	name="erroresDetalle">
+                <xsd:sequence>
+                    <xsd:element name="error" 	type="tns:error" 	minOccurs="0" 	maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType 	name="erroresGeneral">
+                <xsd:sequence>
+                    <xsd:element name="error" 	type="tns:error" 	minOccurs="0" 	maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType 	name="error">
+                <xsd:sequence>
+                    <xsd:element name="cuenta" 		type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="mensaje" 		type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="tipoError" 		type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name="validarInformeRequest">
+        <wsdl:part element="tns:validarInforme" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="validarInformeResponse">
+        <wsdl:part element="tns:validarInformeResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="ValidarInforme">
+        <wsdl:operation name="validarInforme">
+            <wsdl:input message="tns:validarInformeRequest"/>
+            <wsdl:output message="tns:validarInformeResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ValidarInformeSOAP" type="tns:ValidarInforme">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="validarInforme">
+            <soap:operation soapAction="http://www.cgr.cl/OSB/SectorPublico/TDRMP/V2/EXP/ValidacionInforme/validarInforme"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ValidarInforme">
+        <wsdl:port binding="tns:ValidarInformeSOAP" name="ValidarInformeSOAP">
+            <soap:address location="http://www.example.org/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

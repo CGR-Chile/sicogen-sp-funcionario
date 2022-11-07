@@ -1,0 +1,45 @@
+ * {margin:0;padding:0;}
+.scrollBox { width: 920px; clear: both; margin: 20px auto; }
+.scrollBox .viewport { width: 900px; height: 200px; overflow: hidden; position: relative; }
+.scrollBox .overview { list-style: none; position: absolute; left: 0; top: 0; }
+.scrollBox .thumb .end,.scrollBox .thumb { background-color: #00ff00; }
+.scrollBox .scrollbar { position: relative; float: right; width: 15px; border-radius:15px;}
+.scrollBox .track { 
+    background-color: #D8EEFD; 
+    height: 100%; 
+    width:13px; 
+    position: relative; 
+    padding: 0 1px; 
+    border-radius:15px;
+    -webkit-box-shadow: inset 0px 0px 5px 5px #ededed;
+    -moz-box-shadow: inset 0px 0px 5px 5px #ededed;
+    box-shadow: inset 0px 0px 5px 5px #ededed;
+    }
+.scrollBox .thumb {
+    height: 20px; 
+    width: 13px; 
+    cursor: pointer; 
+    overflow: hidden; 
+    position: absolute; 
+    top: 0; 
+    border-radius:15px;
+    -webkit-box-shadow: inset 0px 0px 5px 5px #333333;
+    -moz-box-shadow: inset 0px 0px 5px 5px #333333;
+    box-shadow: inset 0px 0px 5px 5px #333333;
+    }
+.scrollBox .thumb .end {
+    overflow: hidden; 
+    height: 15px; 
+    width: 13px; 
+    border-radius:15px;
+    position:absolute;left:0;top:0;
+    -webkit-box-shadow: inset 0px 0px 5px 5px #333333;
+    -moz-box-shadow: inset 0px 0px 5px 5px #333333;
+    box-shadow: inset 0px 0px 5px 5px #333333;
+    clip:rect(0px,13px,5px,0px);
+    }
+.scrollBox .disable{ display: none; }
+
+.scrollBox p {
+     
+}

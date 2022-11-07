@@ -1,0 +1,11 @@
+BODY,HTML {padding: 0px;margin: 0px;}
+BODY {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 11px;background: #FFF;padding: 15px;}
+H1 { font-family: Georgia, serif;font-size: 20px; font-weight: normal;}
+H2 { font-family: Georgia, serif;font-size: 16px;font-weight: normal;margin: 0px 0px 10px 0px;}
+#myDiv { width: 150px; border: solid 1px #2AA7DE; background: #6CC8EF;text-align: center;padding: 4em .5em;margin: 1em;float: left; }
+#myList {margin: 1em;float: left;}
+#myList UL {padding: 0px;margin: 0em 1em;}
+#myList LI {width: 100px;border: solid 1px #2AA7DE;background: #6CC8EF;padding: 5px 5px;margin: 2px 0px;list-style: none;}
+#options {clear: left;}
+#options INPUT {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 11px;width: 150px;}
+.rowdiv{margin:2.5px 5px; clear:both;float:left;}

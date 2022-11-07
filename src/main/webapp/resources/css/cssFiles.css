@@ -1,0 +1,141 @@
+div.celm03 {
+	position: relative;
+	width: 210px;
+	height: 24px;
+	overflow: hidden;	
+	clip: rect(0px, 150px, 24px, 0px);
+	margin: 0;
+}
+
+div.cel03 {
+	position: relative;
+	width: 85px;
+	height: 24px;
+	overflow: hidden;
+	/*background: url(../images/examinar.png) left top no-repeat;*/
+	clip: rect(0px, 150px, 24px, 0px);
+	margin: 5px 0 0 0;
+}
+
+div.cel03 input {
+	position: absolute;
+	left: auto;
+	right: 0px;
+	top: 0px;
+	margin: 0;
+	padding: 0;
+	filter: Alpha(Opacity = 0);
+	-moz-opacity: 0;
+	opacity: 0;
+	height: 40;
+	width: 80px;
+}
+
+div.celm03 input {
+	position: absolute;
+	left: auto;
+	right: 0px;
+	top: 0px;
+	margin: 0;
+	padding: 0;
+	filter: Alpha(Opacity = 0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+div.cel03 input:disabled{
+	cursor: default;
+}
+.files input:disabled{
+	cursor: default;
+}
+
+.tableFiles {
+	width: 100%;
+	color: #000;
+}
+
+.tableFiles td.tdLabel {
+	display: none;
+}
+
+.tableFiles td {
+	font: bold 0.7em sans-serif;
+	background-color: #EEE;
+}
+
+.tableFiles tr {
+	height: 35px;
+	background-color: #EEE;
+}
+
+.tableFiles th {
+	font: bold 0.6em sans-serif;
+}
+
+.files {
+	font: normal 10px sans-serif;
+	font-weight: normal;
+	display: block;
+	color: white;
+	font-size: 9px;
+	width: 44px;
+	text-transform: none;
+	background: url(../images/file01.png) no-repeat;
+	background-size: 32px;
+	border: none;
+	height: 20px;
+	cursor: pointer;
+}
+
+.files2 {
+	position: absolute;
+	background: url(../images/file01.png) no-repeat;
+	background-size: 32px;
+	top: 0;
+	right: 0;
+	margin: 0;
+	border: solid transparent;
+	border-width: 0 0 100px 200px;
+	opacity: 0.0;
+	filter: alpha(opacity = 0);
+	-o-transform: translate(250px, -50px) scale(1);
+	-moz-transform: translate(-300px, 0) scale(4);
+	direction: ltr;
+	cursor: pointer;
+}
+.botonFile {
+    background-color: #464749;
+    border: 1px solid #E0E0E2;
+    border-radius: 10px 10px 10px 10px;
+    padding-bottom: 1px;
+    text-align:center;
+    width: 82px;
+    font-style: arial;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 20px;
+    /**margin-left: 2px;*/
+    float:right;
+ 
+}
+.botonFile:hover {
+    background-color: #FF9900;
+    cursor: pointer;
+   
+}
+.files:hover{ background-color: #FF9900;}
+
+.botonFile:disabled{
+    background-color: #ccc;
+    cursor: default;
+}
+.transparent {
+	width: 100%; 
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=100);
+	-moz-opacity:1;
+	-khtml-opacity: 1;
+	opacity: 1;
+}

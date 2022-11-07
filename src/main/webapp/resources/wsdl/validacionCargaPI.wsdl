@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.cgr.cl/OSB/CargaArchivo/V2/DOM/ValidacionCarga" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="validacionCarga" targetNamespace="http://www.cgr.cl/OSB/CargaArchivo/V2/DOM/ValidacionCarga">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.cgr.cl/OSB/CargaArchivo/V2/DOM/ValidacionCarga">
+            <xsd:element name="ValidarCarga">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nombreArchivo" type="xsd:string"/>
+                        <xsd:element name="varInforme" type="xsd:string"/>
+                        <xsd:element name="varPeriodo" type="xsd:string"/>
+                        <xsd:element name="varEjercicio" type="xsd:string"/>
+                        <xsd:element name="periodo" type="xsd:decimal"/>
+                        <xsd:element name="idEntidad" type="xsd:decimal"/>
+                        <xsd:element name="idInforme" type="xsd:decimal"/>
+                        <xsd:element name="usuario" type="xsd:string"/>
+                        <xsd:element name="tipoArchivo" type="xsd:decimal"/>
+                        <xsd:element name="documento" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ValidarCargaResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="idFileUpload" type="xsd:decimal"/>
+                        <xsd:element name="estado" type="xsd:string"/>
+                        <xsd:element name="mensajeCarga" type="xsd:string"/>
+                        <xsd:element name="listaValidaciones" type="tns:listaValidaciones" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+
+
+            <xsd:complexType name="listaValidaciones">
+                <xsd:sequence>
+                    <xsd:element name="validacionRegla" type="tns:validacionRegla" minOccurs="1" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="validacionRegla">
+                <xsd:sequence>
+                    <xsd:element name="seccionArchivo" type="xsd:string"/>
+                    <xsd:element name="estadoCarga" type="xsd:short"/>
+                    <xsd:element name="idRegla" type="xsd:short"/>
+                    <xsd:element name="mensajeError" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+        </xsd:schema>
+
+
+
+
+
+    </wsdl:types>
+
+
+
+
+
+
+    <wsdl:message name="ValidarCargaRequest">
+        <wsdl:part element="tns:ValidarCarga" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="ValidarCargaResponse">
+        <wsdl:part element="tns:ValidarCargaResponse" name="parameters"/>
+    </wsdl:message>
+
+
+    <wsdl:portType name="validacionCarga">
+        <wsdl:operation name="ValidarCarga">
+            <wsdl:input message="tns:ValidarCargaRequest"/>
+            <wsdl:output message="tns:ValidarCargaResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+
+    <wsdl:binding name="validacionCargaSOAP" type="tns:validacionCarga">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="ValidarCarga">
+            <soap:operation soapAction="http://www.cgr.cl/OSB/CargaArchivo/V2/DOM/ValidacionCarga/NewOperation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+
+    <wsdl:service name="validacionCarga">
+        <wsdl:port binding="tns:validacionCargaSOAP" name="validacionCargaSOAP">
+            <soap:address location="http://www.example.org/"/>
+        </wsdl:port>
+    </wsdl:service>
+
+
+</wsdl:definitions>

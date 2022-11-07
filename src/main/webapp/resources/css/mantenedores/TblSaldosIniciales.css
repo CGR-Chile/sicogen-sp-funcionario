@@ -1,0 +1,4 @@
+#ExpenseTableContainer{	position: relative; width: 890px;}
+#LoadRecordsButton{ 	display:none;}
+.jtable thead{			height: 80px;}
+.ComboBoxes{			height: 40px;padding:15px 10px;}

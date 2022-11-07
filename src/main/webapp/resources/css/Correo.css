@@ -1,0 +1,42 @@
+.contEmail{
+	top:5%;
+	left:40% !important;
+	width:600px !important;
+	height: 410px !important;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+}
+.titEmail{
+	text-transform: uppercase;
+	font: bold 18px arial;
+	background: white url(../images/cuadrados2.png) top left no-repeat;
+	margin:10px 0 20px 0;
+	padding:0 0 0 70px;
+	color: #ccc;
+}
+.datosCorreo{		clear:both; width:800px;height:25px;}
+.etiqCorreo{		width:100px;float:left;}
+.datosCorreo 
+input, textarea{ 	font: normal 12px arial; width:250px;}
+.mensaje{			width:480px;height:120px;}
+.btnCorreo{			padding: 5px; height: 40px !important;}
+.botonesCorreo{ 	margin: 10px;}
+
+
+#field { margin-left: .5em; float: left; }
+#field, label { float: rigth; font-family: Arial, Helvetica, sans-serif; font-size: small; }
+br { clear: both; }
+input { border: 1px solid black; margin-bottom: .5em;  }
+input.error { border: 1px solid red; }
+label.error {
+	background: url('images/unchecked.gif') no-repeat;
+	padding-left: 16px;
+	margin-left: .3em;
+    display: inline;
+}
+label.valid {
+	background: url('images/checked.gif') no-repeat;
+	display: block;
+	width: 16px;
+	height: 16px;
+}

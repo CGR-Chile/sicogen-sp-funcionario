@@ -1,0 +1,220 @@
+.DetalleInforme{
+	margin-top: 10px;
+	width: 100%;
+	filter:alpha(opacity=90); opacity:0.9;
+	overflow-x:hiden; 
+	overflow-y:scroll;
+}
+.tituloInforme{	
+	font: bold 16px sans-serif ;
+	text-transform: uppercase; 
+	color: #666666;
+	margin-left:65px;
+}
+
+.subtitulo{	
+	font: bold 12px sans-serif ;
+	text-transform: uppercase; 
+	color: #666666;
+	margin-left:15px;
+}
+.titulo{
+	text-transform: uppercase; 
+}
+
+.logo2 {
+	background-image: url('../images/arriba.jpg');
+	width: 1024px;
+	height: 92px;
+}
+
+.contenedor {
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    min-width: 800px;
+    width: 95%;
+}
+.infoContenedoresUno{
+	/*display:table; margin:10px;*/
+	
+	font: bold 12px sans-serif ;
+	width: 90%;
+	height:70px;
+	margin: 10px 0.2% 2% 0.5%;
+	padding: 10px 10px 10px 10px;
+	border: 2px solid;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	color: #333;
+}
+.infoContenedores{
+	/*display:table; margin:10px;*/
+	
+	font: bold 12px sans-serif ;
+	width: 95%;
+	height:70px;
+	margin: 10px 0.2% 2% 0.5%;
+	padding: 10px 10px 10px 10px;
+	border: 2px solid;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	color: #333;
+}
+.encCel{
+	float:left;
+	padding:5px 10px 0 0;
+}
+
+.txtInformes{
+	text-align: left;
+	font: normal 10px sans-serif ;
+	width: 98%;	
+}
+.txtInformesC{
+	text-align: Center;
+	font: normal 10px sans-serif ;
+	width: 98%;	
+}
+.txtInformesR{
+	text-align: right;
+	font: normal 10px sans-serif ;
+	width: 99%;	
+}
+
+.detDigitacion{
+	/*display:table;*/
+	clear:both;
+	margin:10px;
+	font: normal 12px sans-serif ;
+}
+.detCel01{
+	width: 80px;
+	padding: 2px;
+}
+.detCel01{
+	width: 80px;
+	padding: 2px;
+}
+.txtMoneda{
+	width: 70px;
+	text-align: center;
+	padding: 0 3px 0 0;
+}
+.Selectano{
+	text-align: center;
+	width:50px;
+	font: normal 10px sans-serif ;
+}
+
+.SelecArea{
+	text-align: center;
+	width:150px;
+	font: normal 10px sans-serif ;
+}
+
+.img25{
+	width:25px;
+	height: 25px;
+}
+.listaTitulo{
+	left: 100px; 
+	top: 200px;
+	font: bold 10px sans-serif ;
+	overflow-x:hiden; 
+	overflow-y:scroll;
+}
+.listaTitulo th{
+	background-color: #E6E6E6;
+	overflow-x:hiden; 
+	overflow-y:scroll;
+}
+.txtFile{
+	font: normal 10px sans-serif ;
+	padding:0;
+	margin:0;
+}
+
+#table2 {position:relative;left:100px;top:100px;}
+#titulo{	font:arial;	font-size:30px;	position:relative;left:100px;top:100px;	 width: 900px;}
+#verform,#selecinfo,#optioninfo { left: 100px; position: relative;top: 120px;}
+#row1{ background-color: #F8E9E9; clear: both; font: bold 10px sans-serif; height: auto !important; margin: 0; min-height: 32px;padding: 0;
+position: relative;left:200px;top:125px;}
+#row2,#row3{ left: 60px; position: relative; top: 100px;width:1800px}	
+#menuCabecera,#menuCabecera2{ position: relative; left:60px; top:120px; font:Sans-serif; font-size:20px;width:1800px}
+#menuCabecera ul li,#menuCabecera2 ul li {padding: 5px;display: table-cell;}
+#row2 ul li,#row3 ul li { display: table-cell;}
+
+#tinfo{width: 270px;}
+
+
+
+
+.fila1{width: 261px;text-align:center;}
+.fila2{   text-align: center;width: 139px;}
+.fila3{  text-align: center;width: 139px;}
+.fila4{  text-align: center;width: 139px;}
+.fila5{text-align: center;width: 140px;}
+.fila6{width: 138px;text-align: center;}
+.fila7{ text-align: center;width: 139px;}
+.fila8{width: 138px;text-align: center;}
+.fila9{width: 138px;text-align: center;}
+.fila10{ width: 129px;text-align: center;}
+.fila11{  text-align: center;width: 82px;}
+.fila12{text-align: center; width: 129px;}
+.fila13{   width: 100px;}
+.fila14{  text-align: center;width: 131px;}
+.fila15{   width: 149px;}
+.fila16{text-align: center;width: 130px;}
+.fila17{ text-align: center;width: 128px;}
+.fila18{ text-align: center;width: 128px;}
+.fila19{ text-align: center;width: 139px;}
+.fila20{ text-align: center;width: 139px;}
+.fila21{ text-align: center;width: 140px;}
+.fila22{ text-align: center;width: 79px;}
+.fila23{ text-align: center;width: 116px;}
+.fila24{ text-align: center;width: 119px;}
+.fila25{ text-align: center;width: 118px;}
+.fila26{ text-align: center;width: 119px;}
+.fila27{ text-align: center;width: 138px;}
+.fila28{ text-align: center;width: 138px;}
+.fila29{ text-align: center;width: 139px;}
+.fila30{ text-align: center;width: 139px;}
+.fila31{ text-align: center;width: 128px;}
+.fila32{ text-align: center;width: 128px;}
+.fila33{ text-align: center;width: 128px;}
+.fila34{ text-align: center;width: 50px;}
+.fila35,#subt{ text-align: center;width: 128px;}
+.fila36,#item{ text-align: center;width: 128px;}
+.fila37,#Asig{ text-align: center;width: 128px;}
+.fila38,#Suba{ text-align: center;width: 128px;}
+.fila39{ text-align: center;width: 128px;}
+.fila40{ text-align: center;width: 128px;}
+.fila41{ text-align: center;width: 128px;}
+
+
+
+#imagencuenta{cursor: pointer;position: relative;top: 9px;width: 30px;}
+#edit,#delete{cursor:pointer;width:30px;}
+#pop {z-index:2;position:absolute;border: 1px solid #333333;text-align:center;background:#FFFFFF;}
+#cerrar { float:right;margin-right:5px;cursor:pointer;font:Verdana, Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold;color:#000000;
+background-color:#FFFFFF;width:10px;position:relative;margin-top:-1px;text-align:center;}
+
+#titulo1{ text-align: center; width: 70px;}
+#titulo2{ text-align: center; width: 95px;}
+#titulo3{ text-align: center; width: 119px;}
+#titulo4{ text-align: center; width: 60px;}
+#titulo5{ text-align: center; width: 60px;}
+#titulo6{ text-align: center; width: 50px;}
+#titulo7{ text-align: center; width: 50px;}
+#titulo8{ text-align: center; width: 65px;}
+#titulo9{text-align: center; width:  130px;}
+#titulo10{text-align: center; width: 75px;}
+#titulo11{text-align: center; width: 75px;}
+#titulo12{   text-align: center;width: 65px;}
+#titulo13{   text-align: center;width: 65px;}
+/*css para pagina de digitacion AN*/
+#pop2 {z-index:2;position:absolute;border: 1px solid #333333;text-align:center;background:#FFFFFF;}
+#cerrar2 { float:right;margin-right:5px;cursor:pointer;font:Verdana, Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold;color:#000000;
+background-color:#FFFFFF;width:10px;position:relative;margin-top:-1px;text-align:center;}
+.cien{width:120px;}
+.moneda{width:60px;}

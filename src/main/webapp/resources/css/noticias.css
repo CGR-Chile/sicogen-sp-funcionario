@@ -1,0 +1,33 @@
+.cuadroNoticias {	
+	/**background-color: #dfdfe1;*/
+	float: left;	
+	height: 121px;
+	width: 960px;
+	margin:0 auto;
+	padding: 0;	
+   /** border: 1px solid #E0E0E2;¨*/
+    border-radius: 10px 10px 10px 10px;
+}
+.headerNoticias{
+	background-color: #7e7f83;
+	width: 960px;
+}
+.barraNoticiaTitulo{
+	background-color: #37383d;
+	width:100px;
+	color:#fff;
+	font: bold 16px arial;
+}
+.bodyNoticias{
+	height: 121px;
+	width: 960px;
+}
+.ImagenNoticia{
+	width: 100px;
+	height: 121px;
+	margin:5px;
+	float:left;
+}
+.tituloNoticia{
+	font: bold 14px arial;
+}

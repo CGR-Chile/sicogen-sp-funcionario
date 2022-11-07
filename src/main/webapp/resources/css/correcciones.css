@@ -1,0 +1,19 @@
+.ComboBoxes{
+	
+	   left: -150px;
+    position: relative;
+    top: 40px;
+	
+}
+.ListaCorreccion{
+
+    position: relative;
+    top: 100px;
+    width: 800px;
+    left: 50px;
+	
+}
+#LoadRecordsButton{
+	
+	display:none;
+}
