@@ -4,6 +4,7 @@ import cl.contraloria.sicogen.dao.FiltrosDAO;
 import cl.contraloria.sicogen.model.*;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -49,5 +50,9 @@ public class FiltrosService {
 
     public List<Periodos> getPeriodosByEjercicio(Integer idEjercicio) {
         return filtrosDAO.getPeriodosByEjercicio(idEjercicio);
+    }
+
+    public List<EntidadEmisoraDTO> getEntidadEmisora() throws SQLException {
+        return filtrosDAO.getEntidadEmisora();
     }
 }

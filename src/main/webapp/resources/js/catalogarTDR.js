@@ -42,6 +42,8 @@ $(document).ready(function () {
                     '&idInforme=' + idTipInf;
 
                 $.get(url, function (data) {
+                    console.log('select periodo:')
+                    console.log(data)
                     $('#slctPeriodo').empty().append('<option selected="selected" value="-1">Selec. Período</option>');
 
                     for (var i = 0; i < data.length; i++) {

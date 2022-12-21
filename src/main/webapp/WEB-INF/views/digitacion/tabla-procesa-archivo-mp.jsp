@@ -115,7 +115,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-1 align-self-center mt-3">
+                    <div class="col-md-1 align-self-center mt-2">
                         <button type="button" class="btn btn-primary" id="btnAgregar">Agregar</button>
                     </div>
                 </div>

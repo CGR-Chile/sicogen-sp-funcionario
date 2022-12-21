@@ -1,0 +1,50 @@
+.padding-0 {
+    padding: 0 !important;
+}
+.padding-right-0 {
+    padding-right: 0;
+}
+.padding-04-rem {
+    padding: 0.4rem;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.background-3F87C1 {
+    background: #3F87C1
+}
+.text-decoration-none {
+    text-decoration : none;
+}
+.mt-06rem {
+    margin-top: 0.6rem;
+}
+.error {
+    color: red !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: 1px solid #3f87c1;
+    background: #3f87c1;
+    color: #FFFFFF;
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited, a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
+    color: #FFFFFF;
+}
+.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited, .ui-state-focus a, .ui-state-focus a:hover, .ui-state-focus a:link, .ui-state-focus a:visited, a.ui-button:hover, a.ui-button:focus {
+    color: #FFFFFF;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+    background: #0066b8;
+}
+
+.ui-datepicker-trigger {
+    position: absolute;
+    top: 26px;
+    height: 32px;
+    width: 32px;
+    right: 0;
+    background: white;
+    border: 1px solid #ced4da;
+}

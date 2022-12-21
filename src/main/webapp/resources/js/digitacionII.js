@@ -676,3 +676,26 @@ function validarDigitacionTDRII() {
         }
     });
 }
+
+function expandCollapse(id, view) {
+
+    let status = $("#"+id+" img").attr("title");
+    if(status == "Expandir"){
+        $("#"+id+" img").attr("title","Contraer");
+        $("#"+id+" img").attr("alt","Contraer");
+        $("#"+id+" img").attr("src","/sicogen-mf/resources/img/collapseall.png");
+    }else{
+        $("#"+id+" img").attr("title","Expandir");
+        $("#"+id+" img").attr("alt","Expandir");
+        $("#"+id+" img").attr("src","/sicogen-mf/resources/img/expandall.png");
+    }
+
+    $("#accordion-"+view+" div span").each(function(idx, el) {
+        if($(el).prop("id").startsWith('expandCollapse_span_'+view) && $(el).prop("id")!=id){
+            let idelement = $(el).attr('id');
+            $("#"+idelement+" img").attr("title","Expandir");
+            $("#"+idelement+" img").attr("alt","Expandir");
+            $("#"+idelement+" img").attr("src","/sicogen-mf/resources/img/expandall.png");
+        }
+    });
+}

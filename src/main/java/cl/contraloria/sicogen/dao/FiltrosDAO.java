@@ -2,6 +2,7 @@ package cl.contraloria.sicogen.dao;
 
 import cl.contraloria.sicogen.mappers.*;
 import cl.contraloria.sicogen.model.*;
+import cl.contraloria.sicogen.utils.ConexionBD;
 import oracle.jdbc.OracleTypes;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlOutParameter;
@@ -12,8 +13,12 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +57,39 @@ public class FiltrosDAO {
             listaEjercicios.add(ejerciciosDTO);
         }
         return listaEjercicios;
+    }
+
+    public List<EntidadEmisoraDTO> getEntidadEmisora() throws SQLException {
+        List<EntidadEmisoraDTO> listaEntidadEmisora = new ArrayList<EntidadEmisoraDTO>();
+        String query = "SELECT " +
+                "entidad.ent_emi_id ENT_EMI_ID, " +
+                "entidad.ent_emi_nombre ENT_EMI_NOMBRE, " +
+                "entidad.ent_emi_cod_interno ENT_EMI_COD_INTERNO " +
+                "FROM tbl_entidad_emisora ENTIDAD " +
+                "WHERE " +
+                "entidad.ent_emi_isvalid IS NULL";
+        Connection cnnConexion = null;
+        try {
+            ConexionBD cnxConexion = new ConexionBD();
+            cnnConexion = cnxConexion.abrirConexionAtencion();
+            ResultSet rs = cnnConexion.createStatement().executeQuery(query);
+            while (rs.next()) {
+                EntidadEmisoraDTO entidadEmisoraDTO;
+                EntidadEmisoraMapper mapper = new EntidadEmisoraMapper();
+                entidadEmisoraDTO = mapper.mapRow(rs, 1);
+                listaEntidadEmisora.add(entidadEmisoraDTO);
+            }
+            cnnConexion.close();
+            rs.close();
+
+        } catch (SQLException e) {
+        } catch (NamingException e) {
+        } catch (Exception e) {
+        } finally {
+            cnnConexion.close();
+        }
+
+        return listaEntidadEmisora;
     }
 
     private SimpleJdbcCall getEjerciciosCall() {
@@ -204,4 +242,6 @@ public class FiltrosDAO {
                         new SqlOutParameter("CURSOR_PERIODOS", OracleTypes.CURSOR, new PeriodosMapper())
                 );
     }
+
+
 }

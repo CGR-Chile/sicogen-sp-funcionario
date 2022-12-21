@@ -10,6 +10,12 @@ public class ResultadoEjecucion {
         this.msgEjec = msgEjec;
     }
 
+    public ResultadoEjecucion(String codEjec, String msgEjec,Integer newId) {
+        this.codEjec = codEjec;
+        this.msgEjec = msgEjec;
+        this.newId = newId;
+    }
+
     public ResultadoEjecucion() {
     }
 

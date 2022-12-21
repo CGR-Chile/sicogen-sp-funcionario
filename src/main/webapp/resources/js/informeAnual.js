@@ -5,10 +5,6 @@ var revColor='#464749';
 var dialogoAux;
 
 $(document).ready(function() {
-
-
-	console.log('$(document).ready - #idFileUpload : ' +$('#idFileUpload').text());
-
 	$.fx.speeds._default = 650;
 	$(function() {
 		var opt = {

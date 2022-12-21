@@ -1,10 +1,8 @@
 package cl.contraloria.sicogen.controller;
 
 
-import cl.contraloria.sicogen.exceptions.SicogenException;
 import cl.contraloria.sicogen.model.*;
 import cl.contraloria.sicogen.service.FiltrosService;
-import cl.contraloria.sicogen.service.InformesPersistencia;
 import cl.contraloria.sicogen.service.InformesService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -24,13 +21,11 @@ import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -219,6 +214,7 @@ public class CargaInformesController extends HttpServlet {
     @RequestMapping(value = "/getPeriodoByInforme", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Periodos>> getPeriodoByInforme(@RequestParam Integer idEjercicio,
                                                               @RequestParam Integer idInforme) {
+
         List<Periodos> periodos = informesService.getPeriodosByInforme(idEjercicio, idInforme);
         return new ResponseEntity<List<Periodos>>(periodos, HttpStatus.OK);
     }
@@ -301,5 +297,25 @@ public class CargaInformesController extends HttpServlet {
         model.addAttribute("informePI", informePI);
         model.addAttribute("validacionReglaBO", new ArrayList<ValidacionReglaBO>());
         return "carga-informe/tabla-carga-archivo-leypi";
+    }
+
+    @RequestMapping(value = "/getEjercicios", method = RequestMethod.GET)
+    public ResponseEntity<Object> getEjercicios() {
+        try {
+            List<EjerciciosDTO> ejercicios = filtrosService.getEjercicios();
+            return new ResponseEntity<>(ejercicios, HttpStatus.OK);
+        } catch (Exception ex) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/getEntidadEmisora", method = RequestMethod.GET)
+    public ResponseEntity<Object> getEntidadEmisora() {
+        try {
+            List<EntidadEmisoraDTO> entidadEmisoras = filtrosService.getEntidadEmisora();
+            return new ResponseEntity<>(entidadEmisoras, HttpStatus.OK);
+        } catch (Exception ex) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

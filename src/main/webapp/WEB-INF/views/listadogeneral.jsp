@@ -507,7 +507,7 @@
                                     Documentos</font></a></li>
                             </c:if>
                             <c:if test="${item=='mfCarga'}">
-                                <li id="mfCarga"><a href="#tab7default" data-toggle="tab"><font color="#000">Carga
+                                <li id="mfCarga"><a id="tab-carga-informe" href="#tab7default" data-toggle="tab"><font color="#000">Carga
                                     Informes</font></a></li>
                             </c:if>
                             <c:if test="${item=='funcionesEspeciales'}">

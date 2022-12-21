@@ -16,10 +16,10 @@
                 <div class="card-header bg-primary" id="heading_ident_${statusDecr.index}${statusIdent.index}">
                     <div class="row">
                         <div class="col-md-11">
-                            <span class="text-white" data-toggle="collapse" data-target="#collapse_ident_${statusDecr.index}${statusIdent.index}" aria-expanded="true" aria-controls="collapse_ident_${statusDecr.index}${statusIdent.index}" style="cursor: pointer;"><strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${ident.codigoSubtitulo} - ITEM : ${ident.codigoItem} - MONEDA : ${ident.moneda}</strong></span>
+                            <span class="text-white" data-toggle="collapse" data-target="#collapse_ident_${statusDecr.index}${statusIdent.index}" aria-expanded="true" aria-controls="collapse_ident_${statusDecr.index}${statusIdent.index}" id="expandCollapse_span_ident_${statusDecr.index}${statusIdent.index}" onclick="expandCollapse('expandCollapse_span_ident_${statusDecr.index}${statusIdent.index}','ident')" style="cursor: pointer;"><img src="${images}/expandall.png" alt="Expandir" title="Expandir" style="cursor: pointer;"/>&nbsp;<strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${ident.codigoSubtitulo} - ITEM : ${ident.codigoItem} - MONEDA : ${ident.moneda}</strong></span>
                         </div>
                         <div class="col-md-1">
-                            <img src="${images}/delete.png" alt="" class="icoImage18" style="cursor: pointer;" onclick="openDeleteSectionIdentificacion('${decr.codigoPartida}','${decr.codigoCapitulo}','${decr.codigoPrograma}','${ident.codigoSubtitulo}','${ident.codigoItem}','${ident.moneda}')"/>
+                            <img src="${images}/delete.png" alt="Eliminar" title="Eliminar"  class="icoImage18" style="cursor: pointer;" onclick="openDeleteSectionIdentificacion('${decr.codigoPartida}','${decr.codigoCapitulo}','${decr.codigoPrograma}','${ident.codigoSubtitulo}','${ident.codigoItem}','${ident.moneda}')"/>
                         </div>
                     </div>
                 </div>
@@ -175,5 +175,4 @@
             });
         }
     }
-
 </script>

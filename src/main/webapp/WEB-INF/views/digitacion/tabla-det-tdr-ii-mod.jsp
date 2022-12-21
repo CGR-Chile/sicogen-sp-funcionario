@@ -16,10 +16,10 @@
                 <div class="card-header bg-primary" id="heading_mod_${statusDecr.index}${statusMod.index}">
                     <div class="row">
                         <div class="col-md-11">
-                            <span class="text-white" data-toggle="collapse" data-target="#collapse_mod_${statusDecr.index}${statusMod.index}" aria-expanded="true" aria-controls="collapse_mod_${statusDecr.index}${statusMod.index}" style="cursor: pointer;"><strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${modi.codigoSubtitulo} - ITEM : ${modi.codigoItem} - MONEDA : ${modi.moneda}</strong></span>
+                            <span class="text-white" data-toggle="collapse" data-target="#collapse_mod_${statusDecr.index}${statusMod.index}" aria-expanded="true" aria-controls="collapse_mod_${statusDecr.index}${statusMod.index}" id="expandCollapse_span_mod_${statusDecr.index}${statusMod.index}" onclick="expandCollapse('expandCollapse_span_mod_${statusDecr.index}${statusMod.index}','mod')" style="cursor: pointer;"><img src="${images}/expandall.png" alt="Expandir" title="Expandir" style="cursor: pointer;"/>&nbsp;<strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${modi.codigoSubtitulo} - ITEM : ${modi.codigoItem} - MONEDA : ${modi.moneda}</strong></span>
                         </div>
                         <div class="col-md-1">
-                            <img src="${images}/delete.png" alt="" class="icoImage18" style="cursor: pointer;" onclick="openDeleteSectionModificacion('${decr.codigoPartida}','${decr.codigoCapitulo}','${decr.codigoPrograma}','${modi.codigoSubtitulo}','${modi.codigoItem}','${modi.moneda}')"/>
+                            <img src="${images}/delete.png"  alt="Eliminar" title="Eliminar"  class="icoImage18" style="cursor: pointer;" onclick="openDeleteSectionModificacion('${decr.codigoPartida}','${decr.codigoCapitulo}','${decr.codigoPrograma}','${modi.codigoSubtitulo}','${modi.codigoItem}','${modi.moneda}')"/>
                         </div>
                     </div>
                 </div>
@@ -168,5 +168,4 @@
             });
         }
     }
-
 </script>

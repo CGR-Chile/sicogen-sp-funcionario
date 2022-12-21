@@ -98,7 +98,6 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            console.log("ready pagina principal!");
             $('#contEstInfAnual').html('<p id="tdc" class="rwdetInfPar" align="center"> Cargando datos... </p>');
 
             //console.log( "listEstInfAnual.length: "+listEstInfAnual.length );
