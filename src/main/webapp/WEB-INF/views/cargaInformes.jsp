@@ -347,23 +347,3 @@
 
 </body>
 </html>
-
-
-Para que lo tengamos en cuenta.
-
-Tenemos 3 branches
-
-master -> hacer referencia a producción
-develop -> donde se hara merge de las branch con nuestras tareas
-preprod -> sera el ambiente QA donde estara probando Rakel.
-
-
-Si tenemos una tarea que hacer nos debemos crear un branch, tomando como base la de develop.
-
-Una que se termine la tarea, se pasa a develop. (No se trabaja sobre develop para hacer la tarea, debes crearte un branch  para tu tarea)
-
-Una vez se tenga el lote de tarea o gran parte de ellas se hace un merge a preprod, de esta manera Rakel estaria probando es ese branch.
-
-En la MV esta apuntando al branch preprod.
-
-Si en preprod esta ok con todas las pruebas se pasa a master.
