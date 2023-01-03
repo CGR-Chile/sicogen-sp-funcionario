@@ -185,8 +185,8 @@
                                 <th>Fecha de documento</th>
                                 <th>Fecha Recepción CGR</th>
                                 <th>Analista</th>
-                                <th>Bitácora</th>
-                                <th>Digitación</th>
+                                <th style="text-align: center;">Bitácora</th>
+                                <th style="text-align: center;">Digitación</th>
                             </tr>
                             </thead>
                         </table>
@@ -338,7 +338,7 @@
             <tr>
                 <th>Usuario</th>
                 <th>Acción</th>
-                <th>Fecha Hora</th>
+                <th style="text-align: center">Fecha Hora</th>
             </tr>
             </thead>
             <tbody></tbody>

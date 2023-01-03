@@ -67,7 +67,7 @@ public class CaratulaController extends HttpServlet {
         return ResponseEntity.status(http).body(result);
     }
 
-    @PutMapping (value = "/updateCaratula/{idDocumento}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping (value = "/updateCaratula/{idDocumento}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResultadoEjecucion>  updateCaratula(@PathVariable String idDocumento,@RequestBody CaratulaDTO caratulaDTO, HttpServletRequest request) {
         caratulaDTO.setIdDocumento(Integer.valueOf(idDocumento));
         int usuarioId = getUserName(request);

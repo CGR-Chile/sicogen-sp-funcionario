@@ -143,7 +143,8 @@ $(document).ready(function() {
 			},
 			nroDocumento: {
 				required: true,
-				maxlength: 5
+				maxlength: 5,
+				digits: true
 			},
 			ejercicioId: {
 				required: true,
@@ -175,7 +176,8 @@ $(document).ready(function() {
 			},
 			nroDocumento: {
 				required: true,
-				maxlength: 5
+				maxlength: 5,
+				digits: true
 			},
 			ejercicioId: {
 				required: true,
@@ -314,7 +316,7 @@ function editCaratula(payload, dialog, item) {
 	delete data.ejercicioId
 	const settings = {
 		url: `../caratula/updateCaratula/${item.idDocumento}`,
-		method: "PUT",
+		method: "POST",
 		timeout: 0,
 		headers: {
 			"Content-Type": "application/json"
@@ -420,16 +422,16 @@ function getCaratulas(queryParams = '') {
 					data: null,
 					wrap: true,
 					render: function (item) {
-						return '<a class="bitacora-caratula" style="cursor: pointer" title="Ver Bitácora"><img height="16" width="16" src="/sicogen-mf/resources/img/bitacora.png" alt="Ver Bitácora" /></a>'
+						return '<div style="text-align: center"><a class="bitacora-caratula" style="cursor: pointer" title="Ver Bitácora"><img height="16" width="16" src="/sicogen-mf/resources/img/bitacora.png" alt="Ver Bitácora" /></a></div>'
 					}
 				},
 				{
 					data: null,
 					wrap: true,
 					render: function (item) {
-						return '' +
+						return '<div style="text-align: center">' +
 							'<a class="digitacion-caratula" style="cursor: pointer" title="Editar Carátula"><img height="16" width="16" src="/sicogen-mf/resources/img/1_digitar.png" alt="Editar Carátula" /></a>' +
-							'<a class="eliminar-caratula" style="cursor: pointer" title="Eliminar Carátula"><img height="16" width="16" src="/sicogen-mf/resources/img/delete.png" alt="Eliminar Carátula" /></a>' +''
+							'<a class="eliminar-caratula" style="cursor: pointer" title="Eliminar Carátula"><img height="16" width="16" src="/sicogen-mf/resources/img/delete.png" alt="Eliminar Carátula" /></a>' +'</div>'
 					}
 				}
 			],
@@ -477,7 +479,7 @@ function digitacion(item) {
 				console.log('Cerramos form edit de caratula');
 				$(this).dialog("close");
 			},
-			Editar: function(payload) {
+			Aceptar: function(payload) {
 				const isValid = formCaratulaEdit.valid();
 				if (isValid) {
 					console.log('Ejecutando endpoint...');
@@ -573,6 +575,14 @@ function bitacora(item) {
 			if (item.fechaCreacion) {
 				item.fechaCreacion = new Date(item.fechaCreacion).toLocaleString()
 			}
+
+			if (item.operacion.includes("Crea")) {
+				item.operacion = "Creación"
+			}
+			if (item.operacion.includes("Modi")) {
+				item.operacion = "Modificación"
+			}
+
 			return item
 		})
 		$('#table-bitacora').DataTable({

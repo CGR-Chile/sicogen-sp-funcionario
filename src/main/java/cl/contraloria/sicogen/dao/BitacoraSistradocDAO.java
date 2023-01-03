@@ -80,6 +80,7 @@ public class BitacoraSistradocDAO extends BaseDAO {
                 BitacoraSistradocDTO bitacoraSistradocDTO;
                 BitacoraSistradocMapper mapper = new BitacoraSistradocMapper();
                 bitacoraSistradocDTO = mapper.mapRow(rs,1);
+                bitacoraSistradocDTO.setOperacion(bitacoraSistradocDTO.getOperacion().replace("Ã³", "ó"));
                 bitacoraSistradocDTOS.add(bitacoraSistradocDTO);
             }
             cnnConexion.close();

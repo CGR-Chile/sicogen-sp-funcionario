@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class SistradocService {
-    public static final String CREACION = "Creación";
-    public static final String MODIFICACION = "Modificación";
+    public static final String CREACION = "Creaci\u00f3n";
+    public static final String MODIFICACION = "Modificaci\u00f3n";
     private SistradocDAO sistradocDAO;
     private BitacoraSistradocDAO bitacoraSistradocDAO;
 
