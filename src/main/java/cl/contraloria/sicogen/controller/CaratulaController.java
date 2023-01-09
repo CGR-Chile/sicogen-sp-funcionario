@@ -87,7 +87,7 @@ public class CaratulaController extends HttpServlet {
         return ResponseEntity.status(http).body(result);
     }
 
-    @DeleteMapping (value = "/eliminarCaratula/{idDocumento}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping (value = "/eliminarCaratula/{idDocumento}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResultadoEjecucion> eliminarCaratula(@PathVariable String idDocumento) {
 
         ResultadoEjecucion result = new ResultadoEjecucion();

@@ -529,7 +529,7 @@ function eliminar(item) {
 				console.log('Ejecutando endpoint...');
 				const settings = {
 					url: `../caratula/eliminarCaratula/${item.idDocumento}`,
-					method: "DELETE",
+					method: "POST",
 					timeout: 0,
 					headers: {
 						"Content-Type": "application/json"
