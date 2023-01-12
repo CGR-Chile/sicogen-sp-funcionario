@@ -3279,7 +3279,7 @@ public class MantenedorDAO extends BaseDAO {
         SimpleJdbcCall call = createCtaParticularPresupCall();
         Map<String, Object> params = createCtaParticularPresupParams(cta, usuario);
         Map<String, Object> result = call.execute(params);
-        getResult(result, P_COD, P_MSG);
+        getResult(result,P_COD,P_MSG);
     }
 
     private Map<String, Object> createCtaParticularPresupParams(CuentaParticularPresupDTO cta, String usuario) {
@@ -3455,6 +3455,12 @@ public class MantenedorDAO extends BaseDAO {
         call.execute(params);
     }
 
+    public void eliminarCtaParticularesDecreto(Integer idCuenta,String usuario) {
+        SimpleJdbcCall call = callEliminarCtaParticularesDecreto();
+        Map<String, Object> params = paramsEliminarCtaParticularesDecreto(idCuenta,usuario);
+        call.execute(params);
+    }
+
     public void activarCtaParticulares(Integer idCuenta, String usuario) {
         SimpleJdbcCall call = callActivarCtaParticulares();
         Map<String, Object> params = paramsDesActCtaParticulares(idCuenta, usuario);
@@ -3468,6 +3474,13 @@ public class MantenedorDAO extends BaseDAO {
         return params;
     }
 
+    private Map<String, Object> paramsEliminarCtaParticularesDecreto(Integer idCuenta, String usuario) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put(P_CUEN_ENT_ID, idCuenta);
+        params.put(P_USUARIO2, usuario);
+        return params;
+    }
+
     private SimpleJdbcCall callDesactivarCtaParticulares() {
         return new SimpleJdbcCall(jdbcTemplate)
                 .withCatalogName(PKG_CUENTAS)
@@ -3475,6 +3488,15 @@ public class MantenedorDAO extends BaseDAO {
                 .declareParameters(
                         new SqlParameter(P_CUEN_ENT_ID, OracleTypes.NUMBER),
                         new SqlParameter(P_USUARIO2, OracleTypes.VARCHAR)
+                );
+    }
+
+    private SimpleJdbcCall callEliminarCtaParticularesDecreto() {
+        return new SimpleJdbcCall(jdbcTemplate)
+                .withCatalogName(PKG_CUENTAS)
+                .withProcedureName("eliminar_cta_particular_decreto")
+                .declareParameters(
+                        new SqlParameter(P_CUEN_ENT_ID, OracleTypes.NUMBER)
                 );
     }
 

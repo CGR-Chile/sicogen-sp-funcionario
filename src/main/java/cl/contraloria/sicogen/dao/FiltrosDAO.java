@@ -145,6 +145,15 @@ public class FiltrosDAO {
         return (List<ProgramaBO>) respuesta.get("CURSOR_PROGRAMAS");
     }
 
+    public List<OptionsJtable> getProgramaByCapituloIdJTable(String idCapitulo, String idEjercicio) {
+        SimpleJdbcCall llamada = getProgramaByCapituloIdCallJTable();
+        Map<String, Object> parametros = getProgramaByCapituloIdParams(idCapitulo, idEjercicio);
+        Map<String, Object> respuesta = llamada.execute(parametros);
+
+        return (List<OptionsJtable>) respuesta.get("CURSOR_PROGRAMAS");
+
+    }
+
     private Map<String, Object> getProgramaByCapituloIdParams(String idCapitulo, String idEjercicio) {
         Map<String, Object> parametros = new HashMap<String, Object>();
         parametros.put("pEJERCICIO", idEjercicio);
@@ -160,6 +169,17 @@ public class FiltrosDAO {
                         new SqlParameter("pEJERCICIO", OracleTypes.NUMERIC),
                         new SqlParameter("pCAPITULO", OracleTypes.NUMERIC),
                         new SqlOutParameter("CURSOR_PROGRAMAS", OracleTypes.CURSOR, new ProgramaBOMapper())
+                );
+    }
+
+    private SimpleJdbcCall getProgramaByCapituloIdCallJTable() {
+        return new SimpleJdbcCall(jdbcTemplate)
+                .withCatalogName(PKG_FILTRO)
+                .withProcedureName("RECUPERA_PROGRAMA_SP")
+                .declareParameters(
+                        new SqlParameter("pEJERCICIO", OracleTypes.NUMERIC),
+                        new SqlParameter("pCAPITULO", OracleTypes.NUMERIC),
+                        new SqlOutParameter("CURSOR_PROGRAMAS", OracleTypes.CURSOR, new ProgramaJTableMapper())
                 );
     }
 

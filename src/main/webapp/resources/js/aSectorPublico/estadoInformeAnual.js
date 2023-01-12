@@ -83,7 +83,6 @@ function actualizarGrillaInformesJSON(xml, idEjercicio){
 		}).appendTo('#'+row);
 
 		$.each(periodosCod, function(p, pitm){
-			console.log("pediodo-->",pitm);
 			var rowcol='inf'+(itm.informeId)+'_'+pitm;
 			jQuery('<td/>', {
 				id: rowcol,

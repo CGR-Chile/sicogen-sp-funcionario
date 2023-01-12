@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,6 +31,10 @@ public class DigitacionController {
     private static final String ID_PERIODO_DIGITACION = "idPeriodoDigitacion";
     private static final String ID_EJERCICIO_DIGITACION = "idEjercicioDigitacion";
     private static final String ID_INFORME_DIGITACION = "idInformeDigitacion";
+
+    private static final String subTituloDisponible = "31";
+    private static final Integer ejercicioStartIni = 1;
+    private static final Integer ejercicioStopIni = 6;
 
     private InformesService informesService;
     private DigitacionService digitacionService;
@@ -110,8 +115,22 @@ public class DigitacionController {
             session.setAttribute(ID_EJERCICIO_DIGITACION, idEjercicio);
             session.setAttribute(ID_INFORME_DIGITACION, idInforme);
             model.addAttribute("listaMonedas", digitacionService.getMonedasValidas());
-            model.addAttribute("listSubt", catalogoPresupService.getSubtitulosByEjericio(idEjercicio));
+            List<SubTituloBO> listSubt1 = catalogoPresupService.getSubtitulosByEjericio(idEjercicio);
+            List<SubTituloBO> listSubt = new ArrayList<>();
+            listSubt1.forEach((sub) -> {
+                if(subTituloDisponible.equals(sub.getCodSubtitulo())){
+                    listSubt.add(sub);
+                }
+            });
+            model.addAttribute("listSubt", listSubt);
             model.addAttribute(OBJ_XML_II, digitacionService.obtieneDigitacionXML(Integer.valueOf(idTblSistradoc), ejercicio, nroSistradoc));
+
+            Integer ejercicioNumber = 0;
+            try{ejercicioNumber = Integer.parseInt(ejercicio);}
+            catch (NumberFormatException ex){}
+            model.addAttribute("ejercicioStart", ejercicioNumber+ejercicioStartIni);
+            model.addAttribute("ejercicioStop", ejercicioNumber+ejercicioStopIni);
+
             return "digitacion/tabla-procesa-archivo-ii";
         } else {
             return "";
@@ -492,7 +511,17 @@ public class DigitacionController {
     @GetMapping(value = "/getDetalleDigitacionIIIdent", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getDetalleDigitacionIIIdent(Model model,
                                          HttpServletRequest request) throws IOException, SQLException {
+        HttpSession session = request.getSession(false);
+        String ejercicio = (String) session.getAttribute(EJERCICIO);
+        Integer ejercicioNumber = 0;
+        try{ejercicioNumber = Integer.parseInt(ejercicio);}
+        catch (NumberFormatException ex){}
+
         model.addAttribute(OBJ_XML_II, obtieneDigitacionXML(request));
+
+        model.addAttribute("ejercicioStart", ejercicioNumber+ejercicioStartIni);
+        model.addAttribute("ejercicioStop", ejercicioNumber+ejercicioStopIni);
+
         return "digitacion/tabla-det-tdr-ii-ident";
     }
 

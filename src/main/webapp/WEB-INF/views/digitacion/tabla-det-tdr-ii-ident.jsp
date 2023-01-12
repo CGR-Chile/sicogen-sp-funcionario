@@ -16,7 +16,7 @@
                 <div class="card-header bg-primary" id="heading_ident_${statusDecr.index}${statusIdent.index}">
                     <div class="row">
                         <div class="col-md-11">
-                            <span class="text-white" data-toggle="collapse" data-target="#collapse_ident_${statusDecr.index}${statusIdent.index}" aria-expanded="true" aria-controls="collapse_ident_${statusDecr.index}${statusIdent.index}" id="expandCollapse_span_ident_${statusDecr.index}${statusIdent.index}" onclick="expandCollapse('expandCollapse_span_ident_${statusDecr.index}${statusIdent.index}','ident')" style="cursor: pointer;"><img src="${images}/expandall.png" alt="Expandir" title="Expandir" style="cursor: pointer;"/>&nbsp;<strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${ident.codigoSubtitulo} - ITEM : ${ident.codigoItem} - MONEDA : ${ident.moneda}</strong></span>
+                            <span class="text-white" data-toggle="collapse" data-target="#collapse_ident_${statusDecr.index}${statusIdent.index}" aria-expanded="true" aria-controls="collapse_ident_${statusDecr.index}${statusIdent.index}" id="expandCollapse_span_ident_${statusDecr.index}${statusIdent.index}" onclick="expandCollapse('${statusDecr.index}${statusIdent.index}','ident','${images}')" style="cursor: pointer;"><img src="${images}/expandall.png" alt="Expandir" title="Expandir" style="cursor: pointer;"/>&nbsp;<strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${ident.codigoSubtitulo} - ITEM : ${ident.codigoItem} - MONEDA : ${ident.moneda}</strong></span>
                         </div>
                         <div class="col-md-1">
                             <img src="${images}/delete.png" alt="Eliminar" title="Eliminar"  class="icoImage18" style="cursor: pointer;" onclick="openDeleteSectionIdentificacion('${decr.codigoPartida}','${decr.codigoCapitulo}','${decr.codigoPrograma}','${ident.codigoSubtitulo}','${ident.codigoItem}','${ident.moneda}')"/>
@@ -41,11 +41,14 @@
                                     <tr class="title-grid">
                                         <td class="title-grid" width="20%"><div align="center"><span class="Estilo11"><b>Código BIP</b></span></div></td>
                                         <td class="title-grid" width="30%"><div align="center"><span class="Estilo11"><b>Denominación</b></span></div></td>
-                                        <c:if test="${!empty ident.detalleIdentificacionProyectos}">
-                                            <c:forEach var="asig" items="${ident.detalleIdentificacionProyectos[0].montosAsignacion}">
-                                                <td class="title-grid" width="5%"><div align="center"><span class="Estilo11"><b>${asig.codigoAsignacion}</b></span></div></td>
-                                            </c:forEach>
-                                        </c:if>
+                                        <td class="title-grid" width="30%"><div align="center"><span class="Estilo11"><b>Total</b></span></div></td>
+                                            <%--
+                                            <c:if test="${!empty ident.detalleIdentificacionProyectos}">
+                                                <c:forEach var="asig" items="${ident.detalleIdentificacionProyectos[0].montosAsignacion}">
+                                                    <td class="title-grid" width="5%"><div align="center"><span class="Estilo11"><b>${asig.codigoAsignacion}</b></span></div></td>
+                                                </c:forEach>
+                                            </c:if>
+                                            --%>
                                         <td class="title-grid" width="20%"><div align="center"><span class="Estilo11"><b>Compromiso futuro</b></span></div></td>
                                         <td class="title-grid" width="5%"><div align="center"><span class="Estilo11"><b>Eliminar</b></span></div></td>
                                         <td class="title-grid" width="5%"><div align="center"><span class="Estilo11"><b>Editar</b></span></div></td>
@@ -57,9 +60,12 @@
                                             <tr class="row1">
                                                 <td style="text-align: center;">${detproy.codigoBIP}-${detproy.codigoInternoDecretoSIAP}</td>
                                                 <td>${detproy.denominacion}</td>
-                                                <c:forEach var="asig" items="${detproy.montosAsignacion}">
-                                                    <td style="text-align: right;">${asig.monto}</td>
-                                                </c:forEach>
+                                                <td style="text-align: center;">0</td>
+                                                    <%--
+                                                    <c:forEach var="asig" items="${detproy.montosAsignacion}">
+                                                        <td style="text-align: right;">${asig.monto}</td>
+                                                    </c:forEach>
+                                                    --%>
                                                 <td style="text-align: center;"><img src="${images}/calendar.jpg" alt="" class="icoImage18" style="cursor: pointer;" onclick="getLimitesFuturosIdent('${decr.codigoPartida}', '${decr.codigoCapitulo}', '${decr.codigoPrograma}', '${ident.moneda}', '${detproy.codigoBIP}', '${detproy.codigoInternoDecretoSIAP}')"/></td>
                                                 <td style="text-align: center;"><img src="${images}/delete.png" alt="" class="icoImage18" style="cursor: pointer;" onclick="openDeleteAsignacion('${decr.codigoPartida}','${decr.codigoCapitulo}','${decr.codigoPrograma}','${ident.codigoSubtitulo}','${ident.codigoItem}','${detproy.codigoBIP}')"/></td>
                                                 <td style="text-align: center;"><img src="${images}/edit.png" alt="" class="icoImage18" style="cursor: pointer;" onclick="openEditarAsigProyectos(true, '${decr._IdDecreto_II}', '${ident._idIdentificacionProyectos}', '${detproy._idDetalleIdentificacionProyectos}')"/></td>
@@ -71,6 +77,7 @@
                             </div>
                         </div>
                         <br/>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="adminlist">
@@ -81,9 +88,15 @@
                                     <tr class="title-grid">
                                         <td class="title-grid" width="20%"><div align="center"><span class="Estilo11"><b>Código BIP</b></span></div></td>
                                         <td class="title-grid" width="30%"><div align="center"><span class="Estilo11"><b>Denominación</b></span></div></td>
-                                        <c:forEach var="mon" items="${decr.limiteMaximoCompromisos[0].montosAnio}">
-                                            <td class="title-grid" width="10%"><div align="center"><span class="Estilo11"><b>${mon.anio}</b></span></div></td>
+                                        <c:forEach begin="${ejercicioStart}" step="1" end="${ejercicioStop}" var="varanio">
+                                          <td class="title-grid" width="6%"><div align="center"><span class="Estilo11"><b>${varanio}</b></span></div></td>
                                         </c:forEach>
+                                            <%--
+                                           <c:forEach var="mon" items="${decr.limiteMaximoCompromisos[0].montosAnio}">
+                                               <td class="title-grid" width="10%"><div align="center"><span class="Estilo11"><b>${mon.anio}-${ejercicio}</b></span></div></td>
+                                           </c:forEach>
+                                           --%>
+
                                         <td class="title-grid" width="10%"><div align="center"><span class="Estilo11"><b>Eliminar</b></span></div></td>
                                         <td class="title-grid" width="10%"><div align="center"><span class="Estilo11"><b>Editar</b></span></div></td>
                                     </tr>
@@ -96,9 +109,16 @@
                                                     <tr class="row1">
                                                         <td style="text-align: center;">${detproy.codigoBIP}-${detproy.codigoInternoDecretoSIAP}</td>
                                                         <td>${detproy.denominacion}</td>
-                                                        <c:forEach var="mon" items="${lim.montosAnio}">
-                                                            <td style="text-align: right;">${mon.monto}</td>
+
+                                                        <c:forEach begin="${ejercicioStart}" step="1" end="${ejercicioStop}" var="varanio" varStatus="statusEjer">
+                                                            <td>${lim.montosAnio[(statusEjer.count - 1)].monto}</td>
                                                         </c:forEach>
+
+                                                            <%--
+                                                            <c:forEach var="mon" items="${lim.montosAnio}">
+                                                                <td style="text-align: right;">${mon.monto}</td>
+                                                            </c:forEach>
+                                                            --%>
                                                         <td style="text-align: center;"><img src="${images}/delete.png" alt="" class="icoImage18" style="cursor: pointer;" onclick="openDeleteLimite('${decr.codigoPartida}', '${decr.codigoCapitulo}', '${decr.codigoPrograma}', '${detproy.codigoBIP}')"/></td>
                                                         <td style="text-align: center;"><img src="${images}/edit.png" alt="" class="icoImage18" style="cursor: pointer;" onclick="openEditarLimiteCompromiso('${decr._IdDecreto_II}', '${lim._idLimiteMaximoCompromiso}');"/></td>
                                                     </tr>
@@ -152,14 +172,16 @@
             dialogInfoIdent.dialog('open');
             dialogInfoIdent.dialog('option', 'width', 320);
         } else {
-
-            var input = "";
-
+            //var input = "";
+            /*
             $(".dinamicField2Ident").each(function(){
                 input = input.concat($(this).attr("name") + "=" + $(this).val() + "&");
             });
-
             input = input + 'codProyecto='  + cdgProyectSeleccIdent;
+            */
+
+           // alert($("#form_dinamicField2Ident").serialize());
+            let input=$("#form_dinamicField2Ident").serialize();
 
             $.post('../digitacion/postProyectosIIIdent', input).done(function (data) {
                 if (data.codEjec !== "0") {

@@ -63,9 +63,9 @@
         <button class="boton" style="float: initial;margin-top: 10px;" id="btnBuscarCuentas" onclick="loadTable();">Buscar</button><br/>
         <span>Los filtros marcados con * son obligatorios</span>
     </div>
-    <div style="margin-left:15px;float: left; width: 250px;text-align: center;">
+    <!--<div style="margin-left:15px;float: left; width: 250px;text-align: center;">
         <button class="boton" style="float: initial;margin-top: 10px;" id="btnCrearCuenta" onclick="openDialogCreateCtaParticular();">Crear</button><br/>
-    </div>
+    </div>-->
 </div>
 
 <div id="ExpenseTableContainer" style="position: absolute; margin-top: 70px;"></div>
@@ -111,7 +111,7 @@
     <div style="position: absolute; margin-left: 10px;margin-top: 60px;">
 
         <div style="font: bold 12px sans-serif; float:left;">Código Cuenta: <br />
-            <input type="text" class="Inputs" id="codCtaParticularCreate" style="width:250px;"/>
+            <input type="text" class="Inputs" id="codCtaParticularCreate" style="width:250px;" placeholder="00.00.000.000"/>
         </div>
 
         <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Descripción: <br />
@@ -127,16 +127,16 @@
     <div style="position: absolute; margin-left: 10px;margin-top: 120px;">
 
         <div style="font: bold 12px sans-serif; float:left;">Origen: <br>
-            <input type="radio" name="checkOrigenCtaPart" value="0" class="checkOrigenCtaPart" checked> Ley de Presupuesto<br>
-            <input type="radio" name="checkOrigenCtaPart" value="1" class="checkOrigenCtaPart"> Decreto<br>
+            <input type="radio" name="checkOrigenCtaPart" value="0" class="checkOrigenCtaPart"> Ley de Presupuesto<br>
+            <input type="radio" name="checkOrigenCtaPart" value="1" class="checkOrigenCtaPart" checked> Decreto<br>
         </div>
 
-        <div id="datosDecretoCreateCtaPart" style="float: left;display: none;">
+        <div id="datosDecretoCreateCtaPart" style="float: left">
             <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Nº de Documento: <br />
                 <input type="text" class="Inputs" id="nroDocumentoCtaPart" style="width:100px;"/>
             </div>
 
-            <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Año: <br />
+           <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Año: <br />
                 <input type="text" class="Inputs" id="anioDocumentoCtaPart" style="width:50px;"/>
             </div>
         </div>

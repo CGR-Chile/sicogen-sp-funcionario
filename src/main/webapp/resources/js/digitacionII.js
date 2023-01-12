@@ -85,7 +85,8 @@ $(document).ready(function () {
         autoOpen: false,
         modal: true,
         buttons: {
-            Aceptar: postLimitesFuturosIdenti
+            Aceptar: postLimitesFuturosIdenti,
+            Cancelar: function() {$( this ).dialog( "close" );}
         }
     });
 
@@ -677,25 +678,29 @@ function validarDigitacionTDRII() {
     });
 }
 
-function expandCollapse(id, view) {
+function expandCollapse(index, view, pathImg) {
 
+    let id = "expandCollapse_span_"+view+"_"+index;
+    let collapse = pathImg+"/collapseall.png";
+    let expand = pathImg+"/expandall.png";
     let status = $("#"+id+" img").attr("title");
+
     if(status == "Expandir"){
         $("#"+id+" img").attr("title","Contraer");
         $("#"+id+" img").attr("alt","Contraer");
-        $("#"+id+" img").attr("src","/sicogen-mf/resources/img/collapseall.png");
+        $("#"+id+" img").attr("src",collapse);
     }else{
         $("#"+id+" img").attr("title","Expandir");
         $("#"+id+" img").attr("alt","Expandir");
-        $("#"+id+" img").attr("src","/sicogen-mf/resources/img/expandall.png");
+        $("#"+id+" img").attr("src",expand);
     }
 
     $("#accordion-"+view+" div span").each(function(idx, el) {
         if($(el).prop("id").startsWith('expandCollapse_span_'+view) && $(el).prop("id")!=id){
-            let idelement = $(el).attr('id');
-            $("#"+idelement+" img").attr("title","Expandir");
-            $("#"+idelement+" img").attr("alt","Expandir");
-            $("#"+idelement+" img").attr("src","/sicogen-mf/resources/img/expandall.png");
+            let element = $(el).attr('id');
+            $("#"+element+" img").attr("title","Expandir");
+            $("#"+element+" img").attr("alt","Expandir");
+            $("#"+element+" img").attr("src",expand);
         }
     });
 }

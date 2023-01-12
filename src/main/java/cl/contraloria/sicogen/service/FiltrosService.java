@@ -32,6 +32,11 @@ public class FiltrosService {
         return filtrosDAO.getProgramaByCapituloId(idCapitulo, idEjercicio);
     }
 
+    public List<OptionsJtable> getProgramaByCapituloIdJTable(String idCapitulo, String idEjercicio) {
+        return filtrosDAO.getProgramaByCapituloIdJTable(idCapitulo, idEjercicio);
+    }
+
+
     public List<TiposDeInformes> getTiposDeInformes() {
         return filtrosDAO.getTiposDeInformes();
     }

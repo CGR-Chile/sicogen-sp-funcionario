@@ -105,6 +105,17 @@ public class InformesDAO extends BaseDAO {
                 .withoutProcedureColumnMetaDataAccess();
     }
 
+    private SimpleJdbcCall getlistaPartidaJTable() {
+        return new SimpleJdbcCall(jdbcTemplate)
+                .withCatalogName("PKG_MANTENEDORES")
+                .withProcedureName("OBTENER_PARTIDA_EJERCICIO")
+                .declareParameters(
+                        new SqlParameter("pEJERCICIO", OracleTypes.VARCHAR),
+                        new SqlOutParameter("pPARTIDA_CURSOR", OracleTypes.CURSOR, new PartidaJTableMapper())
+                )
+                .withoutProcedureColumnMetaDataAccess();
+    }
+
     private SimpleJdbcCall getlistaCapitulo() {
         return new SimpleJdbcCall(jdbcTemplate)
                 .withCatalogName("PKG_MANTENEDORES")
@@ -113,6 +124,18 @@ public class InformesDAO extends BaseDAO {
                         new SqlParameter("pPARTIDA", OracleTypes.VARCHAR),
                         new SqlParameter("pIDEJERCICIO", OracleTypes.VARCHAR),
                         new SqlOutParameter("pCAPITULO_CURSOR", OracleTypes.CURSOR, new CapituloMapper())
+                )
+                .withoutProcedureColumnMetaDataAccess();
+    }
+
+    private SimpleJdbcCall getlistaCapituloJTable() {
+        return new SimpleJdbcCall(jdbcTemplate)
+                .withCatalogName("PKG_MANTENEDORES")
+                .withProcedureName("OBTENER_CAPITULO_PARTIDA")
+                .declareParameters(
+                        new SqlParameter("pPARTIDA", OracleTypes.VARCHAR),
+                        new SqlParameter("pIDEJERCICIO", OracleTypes.VARCHAR),
+                        new SqlOutParameter("pCAPITULO_CURSOR", OracleTypes.CURSOR, new CapituloJTableMapper())
                 )
                 .withoutProcedureColumnMetaDataAccess();
     }
@@ -137,11 +160,23 @@ public class InformesDAO extends BaseDAO {
         return (List<ProgramaPresupuestarioDTO>) llamada.execute(parametros).get("pPARTIDA_CURSOR");
     }
 
+    public List<OptionsJtable> getlistaPartidaJTable(Integer idEjercicio) {
+        SimpleJdbcCall llamada = getlistaPartidaJTable();
+        Map<String, Object> parametros = getParametroslistapartida(idEjercicio);
+        return (List<OptionsJtable>) llamada.execute(parametros).get("pPARTIDA_CURSOR");
+    }
+
     public List<ProgramaPresupuestarioDTO> getlistaCapitulo(Integer idPartida, Integer idEjercicio){
 
         SimpleJdbcCall llamada = getlistaCapitulo();
         Map<String, Object> parametros = getParametroslistacapitulo(idPartida, idEjercicio);
         return (List<ProgramaPresupuestarioDTO>) llamada.execute(parametros).get("pCAPITULO_CURSOR");
+    }
+
+    public List<OptionsJtable> getlistaCapituloJTable(Integer idPartida, Integer idEjercicio) {
+        SimpleJdbcCall llamada = getlistaCapituloJTable();
+        Map<String, Object> parametros = getParametroslistacapitulo(idPartida, idEjercicio);
+        return (List<OptionsJtable>) llamada.execute(parametros).get("pCAPITULO_CURSOR");
     }
 
 

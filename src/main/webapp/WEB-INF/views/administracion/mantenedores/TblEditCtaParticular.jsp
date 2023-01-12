@@ -74,7 +74,7 @@
 <div style="position: absolute; margin-left: 10px;margin-top: 60px;">
 
     <div style="font: bold 12px sans-serif; float:left;">Código Cuenta: <br />
-        <input type="text" class="Inputs" id="codCtaParticularUpdate" style="width:250px;" value="${ctaParticular.codSubtitulo}.${ctaParticular.codItem}.${ctaParticular.codAsignacion}.${ctaParticular.codSubAsignacion}"/>
+        <input type="text" class="Inputs" id="codCtaParticularUpdate" style="width:250px;" value="${ctaParticular.codSubtitulo}.${ctaParticular.codItem}.${ctaParticular.codAsignacion}.${ctaParticular.codSubAsignacion}"  placeholder="00.00.000.000"/>
     </div>
 
     <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Descripción: <br />
@@ -120,12 +120,12 @@
                 <input type="radio" name="checkOrigenCtaPartUpd" value="1" class="checkOrigenCtaPartUpd"> Decreto<br>
             </div>
 
-            <div id="datosDecretoUpdateCtaPart" style="float: left;display: none;">
+            <div id="datosDecretoUpdateCtaPart" style="float: left;display: none">
                 <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Nº de Documento: <br />
                     <input type="text" class="Inputs" id="nroDocumentoCtaPartUpd" style="width:100px;"/>
                 </div>
 
-                <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Año: <br />
+               <div style="margin-left:15px; font: bold 12px sans-serif; float:left;">Año: <br />
                     <input type="text" class="Inputs" id="anioDocumentoCtaPartUpd" style="width:50px;"/>
                 </div>
             </div>

@@ -227,6 +227,9 @@ public class MantenedoresService {
         mantenedorDAO.desactivarCtaParticulares(idCuenta, usuario);
     }
 
+    public void eliminarCtaParticulares(Integer idCuenta, String usuario) {
+        mantenedorDAO.eliminarCtaParticularesDecreto(idCuenta, usuario);
+    }
     public void activarCtaParticulares(Integer idCuenta, String usuario) {
         mantenedorDAO.activarCtaParticulares(idCuenta, usuario);
     }

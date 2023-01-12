@@ -91,26 +91,48 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="border-collapse:collapse;">
-            <div class="col-md-12">
-                <h6>Monto Cuenta Asignación</h6>
-            </div>
-        </div>
-        <c:forEach var="asig" items="${listaAsignaciones}">
-            <div class="row">
+        <form id="form_dinamicField2Ident">
+            <input type="hidden"  value="0" id="codProyecto" name="codProyecto" readonly="readonly"/>
+            <div class="row" style="border-collapse:collapse;">
                 <div class="col-md-12">
-                    <div class="form-group">
-                        <label>${asig.cuentaAsignacion} ${asig.cuentaNombre}</label>
-                        <input type="text" class="form-control dinamicField2Ident" value="0" id="asig_ident_${asig.cuentaAsignacion}" name="asig_ident_${asig.cuentaAsignacion}_${asig.cuentaNombre}">
-                    </div>
+                    <h6>Monto Cuenta Asignación</h6>
                 </div>
             </div>
-            <script>
-                $(document).ready(function () {
-                    $('#asig_ident_${asig.cuentaAsignacion}').numeric({ negative: false });
-                });
-            </script>
-        </c:forEach>
+            <div class="row d-flex justify-content-between">
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label"> Informaci&oacute;n</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioInfoMCA_ident_agre" value="agregada" id="radioInfoMCA_ident_agre">
+                        <label class="form-check-label" for="radioInfoMCA_ident_agre"> Agregada </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioInfoMCA_ident_agre" value="desagregada" id="radioInfoMCA_ident_desagre">
+                        <label class="form-check-label" for="radioInfoMCA_ident_desagre">Desagregada</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Total</label>
+                        <input type="text" class="form-control" name ="textInfoMCA_ident_total" value="0" id="textInfoMCA_ident_total"/>
+                    </div>
+                </div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+            <div id="divContentAsigNuevoProyIdent">
+                <c:forEach var="asig" items="${listaAsignaciones}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>${asig.cuentaAsignacion} ${asig.cuentaNombre}</label>
+                                <input type="text" class="form-control dinamicField2Ident" value="0" id="asig_ident_${asig.cuentaAsignacion}" name="asig_ident_${asig.cuentaAsignacion}_${asig.cuentaNombre}"/>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </form>
     </div>
 </div>
 <div id="dialogInfoIdent" title="Información" class="custom-with-dialog">
@@ -127,6 +149,44 @@
     var dialogInfoIdent;
 
     $(document).ready(function () {
+
+        $('#radioInfoMCA_ident_agre').trigger( "click" );
+        $("#textInfoMCA_ident_total").numeric({ negative: false });
+
+        $(".dinamicField2Ident").each(function(){
+            $(this).numeric({ negative: false });
+            $(this).prop('disabled', true);
+            $(this).keyup(function (){
+                let sumTot= 0;
+                $(".dinamicField2Ident").each(function(){
+                    sumTot = (parseInt(this.value) + sumTot);
+                });
+                $("#textInfoMCA_ident_total").val(sumTot);
+            });
+        });
+
+        $('#radioInfoMCA_ident_agre').click(function () {
+            let sum = 0;
+            $("#divContentAsigNuevoProyIdent").find(':input').each(function() {
+                let elemento= this;
+                sum = (sum + parseInt(elemento.value));
+                $("#"+elemento.id).val(0);
+                $("#"+elemento.id).prop('disabled', true);
+            });
+            $("#textInfoMCA_ident_total").val(sum);
+            $("#textInfoMCA_ident_total").prop('readOnly', false);
+        });
+
+        $('#radioInfoMCA_ident_desagre').click(function () {
+            let sum = 0;
+            $("#divContentAsigNuevoProyIdent").find(':input').each(function() {
+                let elemento= this;
+                sum = (sum + parseInt(elemento.value));
+                $("#"+elemento.id).prop('disabled', false);
+            });
+            $("#textInfoMCA_ident_total").val(sum);
+            $("#textInfoMCA_ident_total").prop('readOnly', true);
+        });
 
         dialogInfoIdent = $( "#dialogInfoIdent" ).dialog({
             autoOpen: false,
@@ -193,6 +253,7 @@
                     } else {
                         $.each(data, function (i, item) {
                             cdgProyectSeleccIdent = item.proyectoCodigo;
+                            $('#codProyecto').val(item.proyectoCodigo);
                             inptResultadoBusquedaIdent.val(item.proyectoCodigo + ' '+ item.proyectoNombre);
                             divResultBusqProyIdent.html('<span class="text-primary"><strong>Encontrado  : '+ item.proyectoCodigo + ' '+ item.proyectoNombre + '</strong></span>');
                             divResultNOKIdent.hide();
@@ -243,6 +304,7 @@
 
                 if (data.id > 0) {
                     cdgProyectSeleccIdent = addCodProyecto;
+                    $('#codProyecto').val(addCodProyecto);
                 }
             });
         }

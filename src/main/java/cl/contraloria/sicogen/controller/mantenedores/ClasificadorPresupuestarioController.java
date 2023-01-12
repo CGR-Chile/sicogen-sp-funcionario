@@ -1,6 +1,7 @@
 package cl.contraloria.sicogen.controller.mantenedores;
 
 import cl.contraloria.sicogen.exceptions.SicogenException;
+import cl.contraloria.sicogen.mappers.CuentaParticularMapper;
 import cl.contraloria.sicogen.model.*;
 import cl.contraloria.sicogen.service.FiltrosService;
 import cl.contraloria.sicogen.service.InformesService;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/administracion/mantenedores")
@@ -58,6 +61,43 @@ public class ClasificadorPresupuestarioController {
         return new ResponseEntity<List<ProgramaBO>>(filtrosService.getProgramaByCapituloId(idCapitulo, idEjercicio), HttpStatus.OK);
     }
 
+    @PostMapping(value = "/verMantenedorTblPlanCuentasPresupPost")
+    public String getClasificadorPresupesutarioPost(Model model) throws SQLException {
+        List<EjerciciosDTO> listaEjercicios = informesService.getEjercicios();
+        model.addAttribute("listaEjercicios", listaEjercicios);
+        model.addAttribute("listaPartidas", informesService.getlistaPartida(listaEjercicios.get(0).getEjercicioId()));
+        return "administracion/mantenedores/TblClasificadorPresupuestario";
+    }
+
+    @PostMapping(value = "/get-partidas-post")
+    public ResponseEntity<JsonResultJTable> getPartidasPost(@RequestParam Integer idEjercicio) throws SQLException {
+        List<OptionsJtable> partidas = informesService.getlistaPartidaJTable(idEjercicio);
+        JsonResultJTable result = new JsonResultJTable();
+        result.setResult("OK");
+        result.setOptions(partidas);
+        return new ResponseEntity<JsonResultJTable>(result, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/get-capitulos-post")
+    public ResponseEntity<JsonResultJTable> getCapitulosPost(@RequestParam Integer idEjercicio,
+                                                                        @RequestParam Integer idPartida) throws SQLException {
+        List<OptionsJtable> capitulos = informesService.getlistaCapituloJTable(idPartida, idEjercicio);
+        JsonResultJTable result = new JsonResultJTable();
+        result.setResult("OK");
+        result.setOptions(capitulos);
+        return new ResponseEntity<JsonResultJTable>(result, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/get-programas-post")
+    public ResponseEntity<JsonResultJTable> getProgramasPost(@RequestParam String idEjercicio,
+                                                         @RequestParam String idCapitulo) {
+        List<OptionsJtable> programas = filtrosService.getProgramaByCapituloIdJTable(idCapitulo, idEjercicio);
+        JsonResultJTable result = new JsonResultJTable();
+        result.setResult("OK");
+        result.setOptions(programas);
+        return new ResponseEntity<JsonResultJTable>(result, HttpStatus.OK);
+    }
+
     @PostMapping(value = "/listTblCuentasParticulares", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JsonResultJTableCuentasParticulares> listTblCuentasParticulares(@RequestParam Integer idEjercicio,
                                                                                           @RequestParam Integer idPartida,
@@ -82,29 +122,54 @@ public class ClasificadorPresupuestarioController {
         return new ResponseEntity<JsonResultJTableCuentasParticulares>(result, HttpStatus.OK);
     }
 
+//    @PostMapping(value = "/create-cta-particular", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<JsonResultJTableAdd> createCtaParticularPresup(HttpServletRequest req) {
+//
+//        CuentaParticularPresupDTO cta = CuentaParticularMapper.mapRow(req);
+//        HttpSession session = req.getSession(false);
+//        UsuarioDTO usr = (UsuarioDTO) session.getAttribute("usr");
+//        JsonResultJTableAdd jsonAdd = new JsonResultJTableAdd();
+//        jsonAdd.setResult("OK");
+//        try {
+//            if (!"".equalsIgnoreCase(usr.getUserLogin())) {
+//                JsonJTableExpenseBean resp =  mantenedoresService.createCtaParticularPresup(cta, usr.getUserLogin());
+//                if (resp.getCodigo()!=null) {
+//                    jsonAdd.setRecord(resp);
+//                    return new ResponseEntity<JsonResultJTableAdd>(jsonAdd, HttpStatus.OK);
+//                } else
+//                    return new ResponseEntity<JsonResultJTableAdd>(jsonAdd, HttpStatus.INTERNAL_SERVER_ERROR);
+//            }
+//            return new ResponseEntity<JsonResultJTableAdd>(jsonAdd, HttpStatus.BAD_REQUEST);
+//        } catch (SicogenException ex) {
+//            jsonAdd.setResult(ex.getCodError());
+//            jsonAdd.setMessage(ex.getMensaje());
+//            return new ResponseEntity<JsonResultJTableAdd>(jsonAdd, HttpStatus.OK);
+//        }
+//    }
+
     @PostMapping(value = "/create-cta-particular", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResultadoEjecucion> createCtaParticularPresup(HttpServletRequest req,
-                                                                        @RequestBody CuentaParticularPresupDTO cta) {
+    public ResponseEntity<ResultadoEjecucion> createCtaParticularPresup(HttpServletRequest req, @RequestBody CuentaParticularPresupDTO cta) {
+
+        //cta = CuentaParticularMapper.mapRow(req);
         HttpSession session = req.getSession(false);
         UsuarioDTO usr = (UsuarioDTO) session.getAttribute("usr");
-        ResultadoEjecucion result = new ResultadoEjecucion();
-        result.setCodEjec("0");
+        ResultadoEjecucion resultadoEjecucion = new ResultadoEjecucion();
+        resultadoEjecucion.setCodEjec("0");
         String[] codCuentaSplit = cta.getCodCuenta().split("\\.");
         cta.setCodSubtitulo(codCuentaSplit[0]);
         cta.setCodItem(codCuentaSplit[1]);
         cta.setCodAsignacion(codCuentaSplit[2]);
         cta.setCodSubAsignacion(codCuentaSplit[3]);
-
         try {
-            mantenedoresService.createCtaParticularPresup(cta, usr.getUserLogin());
-            return new ResponseEntity<ResultadoEjecucion>(result, HttpStatus.OK);
-        } catch (SicogenException ex) {
-            result.setCodEjec(ex.getCodError());
-            result.setMsgEjec(ex.getMensaje());
-            return new ResponseEntity<ResultadoEjecucion>(result, HttpStatus.OK);
+             mantenedoresService.createCtaParticularPresup(cta, usr.getUserLogin());
+            return new ResponseEntity<ResultadoEjecucion>(resultadoEjecucion, HttpStatus.OK);
+            }
+        catch (SicogenException ex) {
+        resultadoEjecucion.setCodEjec(ex.getCodError());
+        resultadoEjecucion.setMsgEjec(ex.getMensaje());
+            return new ResponseEntity<ResultadoEjecucion>(resultadoEjecucion, HttpStatus.OK);
         }
     }
-
     @GetMapping(value = "/get-cta-particular")
     public String getCtaParticularPresup(Model model,
                                          @RequestParam Integer idCuenta,
@@ -166,6 +231,17 @@ public class ClasificadorPresupuestarioController {
         Integer idCta = (Integer) session.getAttribute("idCuentaParticularDesAct");
         mantenedoresService.desactivarCtaParticulares(idCta, usr.getUserLogin());
         return new ResponseEntity<ResultadoEjecucion>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/eliminar-cta-particular")
+    public ResponseEntity<JsonResultJTable> eliminarCtaParticular(HttpServletRequest req) {
+        HttpSession session = req.getSession(false);
+        UsuarioDTO usr = (UsuarioDTO) session.getAttribute("usr");
+        Integer idCta = (Integer) session.getAttribute("idCuentaParticularDesAct");
+        mantenedoresService.eliminarCtaParticulares(idCta, usr.getUserLogin());
+        JsonResultJTable result = new JsonResultJTable();
+        result.setResult("OK");
+        return new ResponseEntity<JsonResultJTable>(result, HttpStatus.OK);
     }
 
     @PostMapping(value = "/activar-cta-particular")

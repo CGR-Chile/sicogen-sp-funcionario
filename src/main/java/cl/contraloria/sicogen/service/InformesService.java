@@ -103,12 +103,20 @@ public class InformesService {
         return resultado;
     }
 
+    public List<OptionsJtable> getlistaPartidaJTable(Integer idEjercicio) throws SQLException {
+        return informesDAO.getlistaPartidaJTable(idEjercicio);
+    }
+
     public List<ProgramaPresupuestarioDTO> getlistaCapitulo(Integer idPartida, Integer idEjercicio) throws SQLException {
 
         List<ProgramaPresupuestarioDTO> resultado = new ArrayList();
         resultado = informesDAO.getlistaCapitulo(idPartida, idEjercicio);
 
         return resultado;
+    }
+
+    public List<OptionsJtable> getlistaCapituloJTable(Integer idPartida, Integer idEjercicio) throws SQLException {
+        return informesDAO.getlistaCapituloJTable(idPartida, idEjercicio);
     }
 
     public InformesEstadosAnualBO getEstadoInformeAnual(String codPartida, String codCapitulo, Integer ejercicioId, Integer tipoInforme) throws SQLException {

@@ -16,7 +16,7 @@
                 <div class="card-header bg-primary" id="heading_mod_${statusDecr.index}${statusMod.index}">
                     <div class="row">
                         <div class="col-md-11">
-                            <span class="text-white" data-toggle="collapse" data-target="#collapse_mod_${statusDecr.index}${statusMod.index}" aria-expanded="true" aria-controls="collapse_mod_${statusDecr.index}${statusMod.index}" id="expandCollapse_span_mod_${statusDecr.index}${statusMod.index}" onclick="expandCollapse('expandCollapse_span_mod_${statusDecr.index}${statusMod.index}','mod')" style="cursor: pointer;"><img src="${images}/expandall.png" alt="Expandir" title="Expandir" style="cursor: pointer;"/>&nbsp;<strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${modi.codigoSubtitulo} - ITEM : ${modi.codigoItem} - MONEDA : ${modi.moneda}</strong></span>
+                            <span class="text-white" data-toggle="collapse" data-target="#collapse_mod_${statusDecr.index}${statusMod.index}" aria-expanded="true" aria-controls="collapse_mod_${statusDecr.index}${statusMod.index}" id="expandCollapse_span_mod_${statusDecr.index}${statusMod.index}" onclick="expandCollapse('${statusDecr.index}${statusMod.index}','mod','${images}')" style="cursor: pointer;"><img src="${images}/expandall.png" alt="Expandir" title="Expandir" style="cursor: pointer;"/>&nbsp;<strong>Decreto: Partida: ${decr.codigoPartida} - Capítulo : ${decr.codigoCapitulo} - Programa: ${decr.codigoPrograma} - SUBT : ${modi.codigoSubtitulo} - ITEM : ${modi.codigoItem} - MONEDA : ${modi.moneda}</strong></span>
                         </div>
                         <div class="col-md-1">
                             <img src="${images}/delete.png"  alt="Eliminar" title="Eliminar"  class="icoImage18" style="cursor: pointer;" onclick="openDeleteSectionModificacion('${decr.codigoPartida}','${decr.codigoCapitulo}','${decr.codigoPrograma}','${modi.codigoSubtitulo}','${modi.codigoItem}','${modi.moneda}')"/>
@@ -145,15 +145,15 @@
             dialogInfoMod.dialog('open');
             dialogInfoMod.dialog('option', 'width', 320);
         } else {
-
+            /*
             var input = "";
-
             $(".dinamicField2Mod").each(function(){
                 input = input.concat($(this).attr("name") + "=" + $(this).val() + "&");
             });
-
             input = input + 'codProyecto='  + cdgProyectSeleccMod;
-
+            */
+            //alert($("#form_dinamicField2Mod").serialize());
+            let input=$("#form_dinamicField2Mod").serialize();
             $.post('../digitacion/postProyectosIIMod', input).done(function (data) {
                 if (data.codEjec !== "0") {
                     dialogInfoMod.html('<p>' + data.msgEjec + '</p>');
